@@ -1,0 +1,5 @@
+C:\Users\vcore\Desktop\wssprueba\WcfService1\bin\WcfService1.dll
+C:\Users\vcore\Desktop\wssprueba\WcfService1\bin\WcfService1.pdb
+C:\Users\vcore\Desktop\wssprueba\WcfService1\obj\Debug\WcfService1.dll
+C:\Users\vcore\Desktop\wssprueba\WcfService1\obj\Debug\WcfService1.pdb
+C:\Users\vcore\Desktop\wssprueba\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache
