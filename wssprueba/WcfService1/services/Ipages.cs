@@ -6,14 +6,16 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.IO;
+using WcfService1.clases;
 
 namespace WcfService1
 {
     [ServiceContract]
-    public interface IExpensas
+    public interface Ipages
     {
         [OperationContract]
         [WebInvoke(UriTemplate = "/GetExp", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST")]
-        Person GetExpensas(Person per);
+        Stream GetUrl(User dat);
     }
 }

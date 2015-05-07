@@ -54,9 +54,9 @@
   <ItemGroup>
     <Content Include="Vistas\css\Images\woods-wallpaper.jpg" />
     <Content Include="Vistas\js\control.js" />
-    <Content Include="Expensas.svc" />
+    <Content Include="services\pages.svc" />
     <Content Include="main.html" />
-    <Content Include="Service1.svc" />
+    <Content Include="services\Service1.svc" />
     <Content Include="Vistas\css\style.css" />
     <Content Include="Vistas\Index.html" />
     <Content Include="Web.config">
@@ -72,15 +72,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Expensas.svc.cs">
-      <DependentUpon>Expensas.svc</DependentUpon>
+    <Compile Include="clases\Conn.cs" />
+    <Compile Include="clases\ControllerUsuario.cs" />
+    <Compile Include="clases\Login.cs" />
+    <Compile Include="services\pages.svc.cs">
+      <DependentUpon>pages.svc</DependentUpon>
     </Compile>
-    <Compile Include="IExpensas.cs" />
-    <Compile Include="person.cs" />
-    <Compile Include="Service1.svc.cs">
+    <Compile Include="services\Ipages.cs" />
+    <Compile Include="clases\User.cs" />
+    <Compile Include="services\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="services\IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

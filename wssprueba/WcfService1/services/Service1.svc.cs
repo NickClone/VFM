@@ -13,7 +13,7 @@ namespace WcfService1
     {
          //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
   
-        public Person GetData(Person per)
+        public User GetData(User per)
         {
             //Person pr = new Person();
             //pr.name = per.name;

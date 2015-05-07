@@ -5,11 +5,14 @@ using System.Web;
 
 
 
-public class Person
+public class User
 {
     public int id { get; set; }
     public string name { get; set; }
     public string app { get; set; }
+    public string pass { get; set; }
+    public string email { get; set; }
+    public string fac { get; set; }
 
 }
 

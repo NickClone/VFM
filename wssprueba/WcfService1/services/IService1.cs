@@ -17,7 +17,7 @@ namespace WcfService1
         [OperationContract]
        // [WebGet]
         [WebInvoke(UriTemplate = "/GetData", ResponseFormat=WebMessageFormat.Json,RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-    Person GetData(Person per);
+    User GetData(User per);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

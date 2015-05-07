@@ -1,11 +1,44 @@
 $(document).ready(function () {
-    
-//    $("#but").click(function () {
-//        funcion();
-//    });
+   $("#but").click(function () {
+       login($("#id").val(), $("#pwd").val());
+       // window.location = "http://www.stackoverflow.com";
+    });
 });
 
 
+function login(usr,pass){
+    if(usr  != '' &&  pass  != '') {
+        var log=new Object();
+        log.email=usr;
+        log.pass=pass;
+        log.fac='edificio1';
+            $.ajax({
+                url: 'http://localhost:1066/services/pages.svc/GetExp',               //  asda 'http://localhost:1066/Service1.svc/GetData',
+                headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                type: 'POST',
+                dataType: 'JSON',
+                data: JSON.stringify(log),
+                async: false
+            }).done(function (data) {
+                redirect(data);
+               
+            });
+        
+    }
+    else {
+     alert("hay campos en blanco");   
+    }
+    
+}
+function redirect(data){
+ if(data != null){
+   window.location =data.url;   
+ }
+    
+}
 
 //
 //

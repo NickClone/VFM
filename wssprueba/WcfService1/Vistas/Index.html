@@ -3,10 +3,8 @@
 <title>VFM</title>
     <head>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-<!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" />
-        <script type="text/javascript" src="js/control.js" />
--->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/control.js"></script>
         
     </head>
 <body>
@@ -21,8 +19,8 @@
             </div>
 
             <div>
-                <input type="text" placeholder="Usuario"/>
-                <input type="password" placeholder="clave"/>
+                <input id='name' type="text" placeholder="Usuario"/>
+                <input id='pwd' type="password" placeholder="clave"/>
             </div>
 
            
@@ -31,7 +29,7 @@
              </div>
 
             <div>
-                <input type="submit" value="login"/>
+                <input type="button"  id='but' value="login"/>
             </div>
 
             <div>
