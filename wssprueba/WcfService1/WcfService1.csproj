@@ -80,10 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clases\Conn.cs" />
+    <Compile Include="clases\ControllerHabit.cs" />
     <Compile Include="clases\ControllerUsuario.cs" />
     <Compile Include="clases\excepcions\DatosFaltantesEx.cs" />
     <Compile Include="clases\excepcions\ValidacionExcepcionAbstract.cs" />
     <Compile Include="clases\excepcions\ExceptionGen.cs" />
+    <Compile Include="clases\Habitante.cs" />
     <Compile Include="clases\Login.cs" />
     <Compile Include="services\pages.svc.cs">
       <DependentUpon>pages.svc</DependentUpon>
