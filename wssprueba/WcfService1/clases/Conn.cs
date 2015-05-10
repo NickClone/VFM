@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WcfService1.clases
 {
-    public class Conn
+    internal class ConexionDA
     {
-        protected SqlConnection conn;
-        protected void  connect(){
-            this.conn=new SqlConnection(@"Data Source=vcore1\SQLEXPRESS;Initial Catalog=VFM;Integrated Security=True");
-            this.conn.Open();
+        private ConexionDA()
+        {
         }
-       
+
+        public static SqlConnection ObtenerConexion()
+        {
+            SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["Data Source=NAPO-NB;Initial Catalog=Administracion_Sys;Integrated Security=True"].ConnectionString);
+            conexion.Open();
+
+            return conexion;
+        }
     }
 }

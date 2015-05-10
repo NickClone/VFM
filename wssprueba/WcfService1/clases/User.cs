@@ -2,19 +2,62 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WcfService1.clases.excepcions;
 
 
 
 public class User
 {
-    public int id { get; set; }
-    public string name { get; set; }
-    public string app { get; set; }
-    public string pass { get; set; }
-    public string email { get; set; }
-    public string fac { get; set; }
+        public User(){
+            Id=0;
+            Nombre="";
+            Apellido="";
+            Account="";
+            Password="";
+            Tel = "";
+            FechaNacimiento = DateTime.MinValue;
+            Sexo = ' ';
+            FechaRegistracion = DateTime.MinValue;
+            FechaActualizacion = DateTime.MinValue;
+            Estado = 0;
+        }
+ 
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Account { get; set; }
+        public string Tel { get; set; }
+        public string Password { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public char Sexo { get; set; }
+        public DateTime FechaRegistracion { get; set; }
+        public Nullable<DateTime> FechaActualizacion { get; set; }
+        public int Estado{get;set;}
 
-}
+
+        public void ValidarDatos()
+        {
+            if (Nombre.Trim() == "" ||
+                Apellido.Trim() == "" ||
+                Account.Trim() == "" ||
+                Password.Trim() == "" ||
+                FechaNacimiento == DateTime.MinValue ||
+                Sexo == ' ')
+            {
+                throw new DatosFaltantesEx();
+            }
+
+ /*           if (!Util.EsEmail(Email))
+            {
+                throw new EmailExcepcion();
+            }
+
+            if (FechaNacimiento > DateTime.Today)
+            {
+                throw new FechaNacimientoExcepcion();
+            }*/
+        }
+    }
 
 
 //[System.Runtime.Serialization.DataContractAttribute()]

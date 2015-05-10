@@ -2,26 +2,84 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
+using WcfService1.clases.excepcions;
 
 namespace WcfService1.clases
 {
-    public class ControllerUsuario: Conn
+    public class ControllerUsuario
     {
         public User usr { get; set; }
         public ControllerUsuario(User per)
         {
             this.usr=per;
         }
-
-        public string getdata()
+        SqlDataReader reader;
+      
+                
+        public int insupdata()
         {
-            string query = "select * from users where email = '"+this.usr.email +"' and pass = '" +this.usr.pass +"' and facility= '"+this.usr.fac+"'";
+            int usu_id=0;
+            string query;
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+                    query = "insupdUser ";
+                    query = query + "'" + usr.Account + "','" + usr.Password + "','";
+                    query = query + usr.Nombre + "','" + usr.Apellido + "','" + usr.FechaNacimiento + "','";
+                    query = query + usr.Tel + "','" + usr.Sexo + "',";
+                    query = query + usr.Estado + ",'" + usr.FechaRegistracion + "','" + usr.FechaActualizacion + "'"; 
 
-            return "existe!";
-            
-            //string query = "Insert into users values (";
-            //query = query + per.id + ",'" + per.name + "','" + per.pass + "')";
-            //this.conn.
+                    SqlCommand cmd = new SqlCommand(query,conexion);
+                    reader = cmd.ExecuteReader();
+                    usu_id = reader.GetInt32(0);
+                    conexion.Close();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+               throw new ExceptionGen("Se produjo un error al crear el usuario.", ex);
+            }
+
+
+            return usu_id;
+  
         }
+
+        public int insupdata()
+        {
+            int usu_id = 0;
+            string query;
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+                    query = "insupdUser ";
+                    query = query + "'" + usr.Account + "','" + usr.Password + "','";
+                    query = query + usr.Nombre + "','" + usr.Apellido + "','" + usr.FechaNacimiento + "','";
+                    query = query + usr.Tel + "','" + usr.Sexo + "',";
+                    query = query + usr.Estado + ",'" + usr.FechaRegistracion + "','" + usr.FechaActualizacion + "'";
+
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    reader = cmd.ExecuteReader();
+                    usu_id = reader.GetInt32(0);
+                    conexion.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new ExceptionGen("Se produjo un error al solicitar listado de Usuarios.", ex);
+            }
+
+
+            return usu_id;
+
+        }
+
+
     }
 }
