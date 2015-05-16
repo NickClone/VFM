@@ -11,19 +11,28 @@ namespace WcfService1.clases
     public class ControllerUsuario
     {
         public User usr { get; set; }
+        public Login log;
         public SqlDataReader reader;
+        string query;
 
         public ControllerUsuario(User per)
         {
             this.usr=per;
+            query = "";
         }
+
+        public ControllerUsuario(Login log)
+        {
+            this.log = log;
+            query = "";
+        }
+
         
       
                 
         public int insupdata()
         {
             int usu_id=0;
-            string query;
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
@@ -50,5 +59,44 @@ namespace WcfService1.clases
             return usu_id;
   
         }
+
+        public string UsuChk() {
+
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+
+                    query = "select 1 from sys_usuarios where usu_acc = '" + log.usr + "' and usu_pass = '" + log.pass + "'";
+
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    reader = cmd.ExecuteReader();
+                    conexion.Close();
+
+                }
+
+            }
+            catch {
+
+                return "baad";
+            
+            };
+            if (reader.GetInt32(0) == 1)
+            {
+
+                return "ok";
+
+            }
+            else
+            {
+
+                return "wrong pass";
+            }
+
+        }
+
+
     }
+
+
 }

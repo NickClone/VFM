@@ -7,15 +7,11 @@ namespace WcfService1.clases
 {
     public class Login
     {
-        private string usr { get; set; }
-        private string pass { get; set; }
-        private string fac { get; set; }
+        public string usr { get; set; }
+        public string pass { get; set; }
+        
 
-        public string url()
-        {
 
-            return "lalal";
-        }
     
     }
 

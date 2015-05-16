@@ -25,7 +25,7 @@ namespace WcfService1.clases
         public DateTime FechaRegHabit { get; set; }
 
 
-        public void ValidarDatos()
+ /*       public void ValidarDatos()
         {
             if (Nombre.Trim() == "" ||
                 Apellido.Trim() == "" ||
@@ -48,4 +48,3 @@ namespace WcfService1.clases
             }*/
         }
     }
-}

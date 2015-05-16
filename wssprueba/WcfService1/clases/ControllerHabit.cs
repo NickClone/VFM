@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using WcfService1.clases.excepcions;
 
 namespace WcfService1.clases
 {
@@ -17,19 +18,17 @@ namespace WcfService1.clases
         
 
         
-        public int insupHabit()
+        public void insupHabit()
         {
-            int usu_id = 0;
             string query;
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
 
-                    query = "insupdHabit " + this.insupdata();
-                  
-
-
+                    query = "insupdHabit " + habit.Id_edif + "," + this.insupdata() + "," + habit.rol + ",'" + habit.Piso + "','" + habit.Dpto + "'" ;
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.ExecuteNonQuery();
 
                 }
 
@@ -38,9 +37,6 @@ namespace WcfService1.clases
             {
                 throw new ExceptionGen("Se produjo un error al crear el usuario.", ex);
             }
-
-
-            return usu_id;
 
         }
 

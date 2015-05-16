@@ -18,7 +18,7 @@ namespace WcfService1
             string path="";
              
             ControllerUsuario usrdat = new ControllerUsuario(dat);
-                if (!string.IsNullOrEmpty(usrdat.getdata())){
+                if (!string.IsNullOrEmpty("hola")){
                     path="http://localhost:1066/main.html";
                 }
                 var j = new

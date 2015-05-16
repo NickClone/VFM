@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WcfService1.clases;
 
 namespace WcfService1
 {
@@ -16,8 +17,8 @@ namespace WcfService1
 
         [OperationContract]
        // [WebGet]
-        [WebInvoke(UriTemplate = "/GetData", ResponseFormat=WebMessageFormat.Json,RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-    User GetData(User per);
+        [WebInvoke(UriTemplate = "/GetData", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+        string GetData(Login per);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

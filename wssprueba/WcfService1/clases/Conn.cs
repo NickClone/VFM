@@ -15,7 +15,7 @@ namespace WcfService1.clases
 
         public static SqlConnection ObtenerConexion()
         {
-            SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["Data Source=NAPO-NB;Initial Catalog=Administracion_Sys;Integrated Security=True"].ConnectionString);
+            SqlConnection conexion = new SqlConnection("Data Source=NAPO-NB;Initial Catalog=Administracion_Sys;Integrated Security=True");
             conexion.Open();
 
             return conexion;
