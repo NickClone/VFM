@@ -1,26 +1,39 @@
 $(document).ready(function () {
-   $("#but").click(function () {
-       login($("#name").val(), $("#pwd").val());
-       // window.location = "http://www.stackoverflow.com";
+
+alert("entro");
+   $("#btn").click(function () {
+
+
+       insert($("#id").val(), $("#text1").val(), $("#text2").val(), $("#text3").val(), $("#text4").val(), $("#text5").val(), $("#text6").val(), $("#text7").val(), $("#text8").val(), $("#text9").val(), $("#text10").val());
+       
+
     });
 });
 
-
-function login(usr,pass){
-    if(usr  != '' &&  pass  != '') {
-        var log=new Object();
-        log.usr = usr;
-        log.pass=pass;
+function insert(id,nombre,apellido,account,password,tel,Fnac,Sexo,Freg,Fact,estado){
+   
+        var usr=new Object();
+        usr.id = id;
+        usr.Nombre = nombre;
+        usr.Apellido = apellido;
+        usr.account = account;
+        usr.Password = Password;
+        usr.Tel = tel;
+        usr.FechaNacimiento = Fnac;
+        usr.Sexo = Sexo;
+        usr.FechaRegistracion = Freg;
+        usr.FechaActualizacion = Fact;
+        usr.Estado = Estado;
        // log.fac='edificio1';
             $.ajax({
-                url: 'http://localhost:1066/services/service1.svc/GetData',               //  asda 'http://localhost:1066/Service1.svc/GetData',
+                url: 'http://localhost:1066/services/service1.svc/insUsr',               //  asda 'http://localhost:1066/Service1.svc/GetData',
                 headers:{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
                 },
                 type: 'POST',
                 dataType: 'JSON',
-                data: JSON.stringify(log),
+                data: JSON.stringify(usr),
                 async: false
             }).done(function (data) {
               
@@ -31,9 +44,7 @@ function login(usr,pass){
             });
         
     }
-    else {
-     alert("hay campos en blanco");   
-    }
+ 
     
 }
 function redirect(data){

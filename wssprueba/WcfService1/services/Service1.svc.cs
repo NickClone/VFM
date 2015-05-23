@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using WcfService1.clases;
+using System.Web.Script.Serialization;
+using System.IO;
 
 namespace WcfService1
 {
@@ -14,16 +16,26 @@ namespace WcfService1
     {
          //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
   
-        public string GetData(Login log)
+        public Stream GetData(Login log)
         {
-            string vuelta;
+          //  string vuelta;
 
             ControllerUsuario cont = new ControllerUsuario(log);
 
+            var s = new JavaScriptSerializer();
+            string jsonClient = s.Serialize(cont.UsuChk());
+            WebOperationContext.Current.OutgoingResponse.ContentType =
+                "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
+            
+        }
+        public void insUsr(User usr) {
 
-            vuelta = cont.UsuChk().ToString();
+            ControllerUsuario cont = new ControllerUsuario(usr);
 
-            return vuelta;
+            cont.insupdata();
+        
+        
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

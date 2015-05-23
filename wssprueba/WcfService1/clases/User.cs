@@ -21,6 +21,22 @@ public class User
             FechaActualizacion = DateTime.MinValue;
             Estado = 0;
         }
+        public User(int _id,string _nombre,string _apellido)
+        {
+            Id = _id;
+            Nombre = _nombre;
+            Apellido = _apellido;
+            Account = "";
+            Password = "";
+            Tel = "";
+            FechaNacimiento = DateTime.MinValue;
+            Sexo = ' ';
+            FechaRegistracion = DateTime.MinValue;
+            FechaActualizacion = DateTime.MinValue;
+            Estado = 0;
+        }
+
+
  
         public int Id { get; set; }
         public string Nombre { get; set; }

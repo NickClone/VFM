@@ -53,6 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTMLPage1.htm" />
     <Content Include="Vistas\dist\css\bootstrap-theme.css" />
     <Content Include="Vistas\dist\css\bootstrap-theme.min.css" />
     <Content Include="Vistas\dist\css\bootstrap.css" />
@@ -66,6 +67,7 @@
     <Content Include="services\Service1.svc" />
     <Content Include="Vistas\css\style.css" />
     <Content Include="Vistas\Index.html" />
+    <Content Include="Vistas\js\controlHtml.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

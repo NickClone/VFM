@@ -60,37 +60,43 @@ namespace WcfService1.clases
 
         }
 
-        public string UsuChk()
+        public User UsuChk()
         {
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
                     string test;
-                    query = "select 1 from sys_usuarios where usu_acc = '" + log.usr + "' and usu_pass = '" + log.pass + "'";
+                    query = "select * from sys_usuarios where usu_acc = '" + log.usr + "' and usu_pass = '" + log.pass + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
-                    reader = cmd.ExecuteReader();
-                    reader.Read();
-                    test = reader.GetValue(0).ToString();
+                    SqlDataReader reader2 = cmd.ExecuteReader();
+//                    reader = cmd.ExecuteReader();
+//                     test = reader.GetValue(0).ToString();
 
-                    conexion.Close();
+                    
 
-                    if (test == "1")
+                    if (1==1)
                     {
 
-                        return "Loggie";
-                    }
-                    else
-                    {
-                        return "no loggie";
+                        reader2.Read();
+
+                        usr = new User(reader2.GetInt32(0),reader2.GetString(1),reader2.GetString(2));
+
+
+                        conexion.Close();
+
+                      
+
+                        
                     }
 
+                    return usr;
                 }
             }
             catch {
 
-                return "bad";    
+                return usr;    
             
             }
 
