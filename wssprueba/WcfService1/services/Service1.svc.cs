@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
@@ -14,12 +14,16 @@ namespace WcfService1
     {
          //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
   
-        public string GetData(Login per)
+        public string GetData(Login log)
         {
-            ControllerUsuario cont = new ControllerUsuario(per);
+            string vuelta;
+
+            ControllerUsuario cont = new ControllerUsuario(log);
 
 
-            return cont.UsuChk().ToString(); 
+            vuelta = cont.UsuChk().ToString();
+
+            return vuelta;
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

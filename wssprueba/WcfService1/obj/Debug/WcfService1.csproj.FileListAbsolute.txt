@@ -16,3 +16,4 @@ C:\gitHub\VFM\wssprueba\WcfService1\bin\WcfService1.dll
 C:\gitHub\VFM\wssprueba\WcfService1\bin\WcfService1.pdb
 C:\gitHub\VFM\wssprueba\WcfService1\obj\Debug\WcfService1.dll
 C:\gitHub\VFM\wssprueba\WcfService1\obj\Debug\WcfService1.pdb
+C:\gitHub\VFM\wssprueba\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache

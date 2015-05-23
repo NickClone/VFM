@@ -1,6 +1,6 @@
 $(document).ready(function () {
    $("#but").click(function () {
-       login($("#id").val(), $("#pwd").val());
+       login($("#name").val(), $("#pwd").val());
        // window.location = "http://www.stackoverflow.com";
     });
 });

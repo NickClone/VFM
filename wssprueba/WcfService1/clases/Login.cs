@@ -9,10 +9,7 @@ namespace WcfService1.clases
     {
         public string usr { get; set; }
         public string pass { get; set; }
-        
-
-
-    
+         
     }
 
 }

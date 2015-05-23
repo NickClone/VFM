@@ -17,7 +17,7 @@ namespace WcfService1.clases
 
         public ControllerUsuario(User per)
         {
-            this.usr=per;
+            this.usr = per;
             query = "";
         }
 
@@ -27,12 +27,12 @@ namespace WcfService1.clases
             query = "";
         }
 
-        
-      
-                
+
+
+
         public int insupdata()
         {
-            int usu_id=0;
+            int usu_id = 0;
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
@@ -41,62 +41,59 @@ namespace WcfService1.clases
                     query = query + "'" + usr.Account + "','" + usr.Password + "','";
                     query = query + usr.Nombre + "','" + usr.Apellido + "','" + usr.FechaNacimiento + "','";
                     query = query + usr.Tel + "','" + usr.Sexo + "',";
-                    query = query + usr.Estado + ",'" + usr.FechaRegistracion + "','" + usr.FechaActualizacion + "'"; 
+                    query = query + usr.Estado + ",'" + usr.FechaRegistracion + "','" + usr.FechaActualizacion + "'";
 
-                    SqlCommand cmd = new SqlCommand(query,conexion);
+                    SqlCommand cmd = new SqlCommand(query, conexion);
                     reader = cmd.ExecuteReader();
                     usu_id = reader.GetInt32(0);
                     conexion.Close();
                 }
-                
+
             }
             catch (Exception ex)
             {
-               throw new ExceptionGen("Se produjo un error al crear el usuario.", ex);
+                throw new ExceptionGen("Se produjo un error al crear el usuario.", ex);
             }
 
 
             return usu_id;
-  
+
         }
 
-        public string UsuChk() {
-
+        public string UsuChk()
+        {
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-
+                    string test;
                     query = "select 1 from sys_usuarios where usu_acc = '" + log.usr + "' and usu_pass = '" + log.pass + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     reader = cmd.ExecuteReader();
+                    reader.Read();
+                    test = reader.GetValue(0).ToString();
+
                     conexion.Close();
 
-                }
+                    if (test == "1")
+                    {
 
+                        return "Loggie";
+                    }
+                    else
+                    {
+                        return "no loggie";
+                    }
+
+                }
             }
             catch {
 
-                return "baad";
+                return "bad";    
             
-            };
-            if (reader.GetInt32(0) == 1)
-            {
-
-                return "ok";
-
-            }
-            else
-            {
-
-                return "wrong pass";
             }
 
         }
-
-
     }
-
-
 }
