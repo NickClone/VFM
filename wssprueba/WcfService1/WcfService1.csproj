@@ -84,16 +84,20 @@
     <Compile Include="clases\Conn.cs" />
     <Compile Include="clases\ControllerHabit.cs" />
     <Compile Include="clases\ControllerUsuario.cs" />
+    <Compile Include="clases\entidades\Amen_hor.cs" />
+    <Compile Include="clases\entidades\Amenity.cs" />
+    <Compile Include="clases\entidades\Dpto.cs" />
+    <Compile Include="clases\entidades\Edificio.cs" />
     <Compile Include="clases\excepcions\DatosFaltantesEx.cs" />
     <Compile Include="clases\excepcions\ValidacionExcepcionAbstract.cs" />
     <Compile Include="clases\excepcions\ExceptionGen.cs" />
-    <Compile Include="clases\Habitante.cs" />
-    <Compile Include="clases\Login.cs" />
+    <Compile Include="clases\entidades\Habitante.cs" />
+    <Compile Include="clases\entidades\Login.cs" />
     <Compile Include="services\pages.svc.cs">
       <DependentUpon>pages.svc</DependentUpon>
     </Compile>
     <Compile Include="services\Ipages.cs" />
-    <Compile Include="clases\User.cs" />
+    <Compile Include="clases\entidades\User.cs" />
     <Compile Include="services\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
