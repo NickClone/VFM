@@ -18,8 +18,9 @@ public class Edificio
             edif_loc = 0;
             estado = 0;
             Ldpto = new List<Dpto>();
+            Lexp = new List<Expensa>();  
         }
-        public Edificio(int _cod_edif, string _edif_calle, decimal _edif_num, string _edif_cp, decimal _edif_country, decimal _edif_prov, decimal _edif_loc, decimal _estado, List<Dpto> _Ldpto)		
+        public Edificio(int _cod_edif, string _edif_calle, decimal _edif_num, string _edif_cp, decimal _edif_country, decimal _edif_prov, decimal _edif_loc, decimal _estado, List<Dpto> _Ldpto,List<Expensa> _Lexp)		
         {
             cod_edif = _cod_edif;
             edif_calle = _edif_calle;
@@ -30,6 +31,7 @@ public class Edificio
             edif_loc = _edif_loc;
             estado = _estado;
             Ldpto = _Ldpto;
+            Lexp = _Lexp;
         }
 
 
@@ -41,7 +43,8 @@ public class Edificio
         public decimal edif_prov { get; set; }
         public decimal edif_loc { get; set; }
         public decimal estado { get; set; }
-        List<Dpto> Ldpto;
+        public List<Dpto> Ldpto { get; set; }
+        public List<Expensa> Lexp{ get; set; }
 
 
         public void ValidarDatos()

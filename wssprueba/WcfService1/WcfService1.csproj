@@ -86,6 +86,7 @@
     <Compile Include="clases\ControllerUsuario.cs" />
     <Compile Include="clases\entidades\Amen_hor.cs" />
     <Compile Include="clases\entidades\Amenity.cs" />
+    <Compile Include="clases\entidades\Expensa.cs" />
     <Compile Include="clases\entidades\Dpto.cs" />
     <Compile Include="clases\entidades\Edificio.cs" />
     <Compile Include="clases\excepcions\DatosFaltantesEx.cs" />
