@@ -11,23 +11,23 @@ function login(usr,pass){
         log.usr = usr;
         log.pass=pass;
        // log.fac='edificio1';
-            $.ajax({
-                url: 'http://localhost:1066/services/service1.svc/GetData',               //  asda 'http://localhost:1066/Service1.svc/GetData',
-                headers:{
+        $.ajax({
+            url: 'http://localhost:1066/services/service1.svc/GetData',               //  asda 'http://localhost:1066/Service1.svc/GetData',
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-                },
-                type: 'POST',
-                dataType: 'JSON',
-                data: JSON.stringify(log),
-                async: false
-            }).done(function (data) {
-              
-              
-               alert(data)
-               // redirect(data);
-               
-            });
+            },
+            type: 'POST',
+            dataType: 'JSON',
+            data: JSON.stringify(log),
+            async: false
+        }).done(function (data) {
+
+            console.log(data);
+            alert(data);
+            // redirect(data);
+
+        });
         
     }
     else {

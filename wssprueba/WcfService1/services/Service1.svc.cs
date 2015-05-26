@@ -29,12 +29,16 @@ namespace WcfService1
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
             
         }
-        public void insUsr(User usr) {
+        public Stream insUsr(User usr) {
 
             ControllerUsuario cont = new ControllerUsuario(usr);
 
-            cont.insupdata();
-        
+            var s = new JavaScriptSerializer();
+            string jsonClient = s.Serialize(cont.insupdata());
+            WebOperationContext.Current.OutgoingResponse.ContentType =
+                "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
+            
         
         }
 

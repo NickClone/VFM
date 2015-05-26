@@ -22,7 +22,7 @@ namespace WcfService1
         Stream GetData(Login per);
 
         [WebInvoke(UriTemplate = "/insUsr", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-        void insUsr(User usr);
+        Stream insUsr(User usr);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
