@@ -66,7 +66,7 @@ namespace WcfService1.clases
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-                    string test;
+                    //string test;
                     query = "select * from sys_usuarios where usu_acc = '" + log.usr + "' and usu_pass = '" + log.pass + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
@@ -74,21 +74,15 @@ namespace WcfService1.clases
 //                    reader = cmd.ExecuteReader();
 //                     test = reader.GetValue(0).ToString();
 
-                    
 
-                    if (1==1)
+
+                    if ( reader2.HasRows )
                     {
-
                         reader2.Read();
-
-                        usr = new User(reader2.GetInt32(0),reader2.GetString(1),reader2.GetString(2));
-
-
-                        conexion.Close();
-
-                      
-
+                        usr = new User(reader2.GetInt32(0),reader2.GetString(3),reader2.GetString(7));
                         
+                        conexion.Close();
+                                              
                     }
 
                     return usr;

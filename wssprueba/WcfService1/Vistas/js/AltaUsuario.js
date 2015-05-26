@@ -1,16 +1,15 @@
 $(document).ready(function () {
-
-alert("entro");
+    alert("entro");
    $("#btn").click(function () {
 
 
-       insert($("#id").val(), $("#text1").val(), $("#text2").val(), $("#text3").val(), $("#text4").val(), $("#text5").val(), $("#text6").val(), $("#text7").val(), $("#text8").val(), $("#text9").val(), $("#text10").val());
+       insert($("#id").val(), $("#box_nombre").val(), $("#box_apellido").val(), $("#box_account").val(), $("#box_password").val(), 
+       $("#box_telefono").val(), $("#box_FecNac").val(), $("#box_FecReg").val(), $("box_sexo").val(), $("#FecAct").val(), $("#box_Status").val());
        
-
     });
 });
 
-function insert(id,nombre,apellido,account,password,tel,Fnac,Sexo,Freg,Fact,estado){
+function insert(id,nombre,apellido,account,password,tel,Fnac,Freg,Sexo,Fact,estado){
    
         var usr=new Object();
         usr.id = id;
@@ -46,7 +45,7 @@ function insert(id,nombre,apellido,account,password,tel,Fnac,Sexo,Freg,Fact,esta
     }
  
     
-}
+
 function redirect(data){
  if(data != null){
    window.location =data.url;   
