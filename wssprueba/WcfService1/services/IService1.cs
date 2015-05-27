@@ -15,16 +15,17 @@ namespace WcfService1
     [ServiceContract]
     public interface IService1
     {
-
-        [OperationContract]
+        
        // [WebGet]
+        [OperationContract(Name = "data")]
         [WebInvoke(UriTemplate = "/GetData", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-        Stream GetData(Login per);
+        Stream GetData(User per);
 
+        [OperationContract(Name = "usr")]
         [WebInvoke(UriTemplate = "/insUsr", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream insUsr(User usr);
-
-        [OperationContract]
+     
+        [OperationContract(Name = "lala")]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here

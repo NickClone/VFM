@@ -53,7 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Vistas\AltaUsuario.htm" />
+    <Content Include="Vistas\AltaUsuario.html" />
     <Content Include="Vistas\dist\css\bootstrap-theme.css" />
     <Content Include="Vistas\dist\css\bootstrap-theme.min.css" />
     <Content Include="Vistas\dist\css\bootstrap.css" />

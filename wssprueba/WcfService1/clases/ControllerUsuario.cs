@@ -11,7 +11,7 @@ namespace WcfService1.clases
     public class ControllerUsuario
     {
         public User usr { get; set; }
-        public Login log;
+        public Login log { get; set; }
         public SqlDataReader reader;
         string query;
 
@@ -28,8 +28,6 @@ namespace WcfService1.clases
         }
 
 
-
-
         public int insupdata()
         {
             int usu_id = 0;
@@ -44,9 +42,13 @@ namespace WcfService1.clases
                     query = query + usr.Estado + ",'" + usr.FechaRegistracion + "','" + usr.FechaActualizacion + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
-                    reader = cmd.ExecuteReader();
-                    usu_id = reader.GetInt32(0);
-                    conexion.Close();
+                    this.reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        usu_id = reader.GetInt32(0);
+                        conexion.Close();
+                    }
                 }
 
             }
@@ -66,20 +68,20 @@ namespace WcfService1.clases
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-                    //string test;
-                    query = "select * from sys_usuarios where usu_acc = '" + log.usr + "' and usu_pass = '" + log.pass + "'";
+                    query = "select * from sys_usuarios where usu_acc = '" + usr.Account + "' and usu_pass = '" + usr.Password + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     SqlDataReader reader2 = cmd.ExecuteReader();
-//                    reader = cmd.ExecuteReader();
-//                     test = reader.GetValue(0).ToString();
-
-
 
                     if ( reader2.HasRows )
                     {
                         reader2.Read();
-                        usr = new User(reader2.GetInt32(0),reader2.GetString(3),reader2.GetString(7));
+                        usr = new User();
+                        usr.Id = reader2.GetInt32(0);
+                        usr.Account = reader2.GetString(1);
+                        usr.Nombre = reader2.GetString(3);
+                        usr.Tel = reader2.GetString(5);
+                        usr.Apellido = reader2.GetString(7);
                         
                         conexion.Close();
                                               

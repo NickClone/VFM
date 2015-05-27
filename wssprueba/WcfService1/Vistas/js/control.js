@@ -8,11 +8,10 @@ $(document).ready(function () {
 function login(usr,pass){
     if(usr  != '' &&  pass  != '') {
         var log=new Object();
-        log.usr = usr;
-        log.pass=pass;
-       // log.fac='edificio1';
+        log.Account = usr;
+        log.Password = pass;
         $.ajax({
-            url: 'http://localhost:1066/services/service1.svc/GetData',               //  asda 'http://localhost:1066/Service1.svc/GetData',
+            url: 'http://localhost:1066/services/service1.svc/getdata',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

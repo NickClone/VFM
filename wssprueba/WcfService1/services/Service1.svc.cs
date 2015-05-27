@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using WcfService1.clases;
 using System.Web.Script.Serialization;
-using System.IO;
+using WcfService1.clases;
 
 namespace WcfService1
 {
@@ -16,10 +17,8 @@ namespace WcfService1
     {
          //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
   
-        public Stream GetData(Login log)
+        public Stream GetData(User log)
         {
-          //  string vuelta;
-
             ControllerUsuario cont = new ControllerUsuario(log);
 
             var s = new JavaScriptSerializer();
@@ -29,6 +28,8 @@ namespace WcfService1
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
             
         }
+
+
         public Stream insUsr(User usr) {
 
             ControllerUsuario cont = new ControllerUsuario(usr);
@@ -38,8 +39,7 @@ namespace WcfService1
             WebOperationContext.Current.OutgoingResponse.ContentType =
                 "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
-            
-        
+
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
