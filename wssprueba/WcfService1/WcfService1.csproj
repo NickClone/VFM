@@ -68,6 +68,7 @@
     <Content Include="Vistas\css\style.css" />
     <Content Include="Vistas\Index.html" />
     <Content Include="Vistas\js\AltaUsuario.js" />
+    <Content Include="Vistas\css\navstyle.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -81,6 +82,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\Banner.cs" />
     <Compile Include="clases\Conn.cs" />
     <Compile Include="clases\ControllerHabit.cs" />
     <Compile Include="clases\ControllerUsuario.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="clases\excepcions\ExceptionGen.cs" />
     <Compile Include="clases\entidades\Habitante.cs" />
     <Compile Include="clases\entidades\Login.cs" />
+    <Compile Include="clases\Menu.cs" />
     <Compile Include="services\pages.svc.cs">
       <DependentUpon>pages.svc</DependentUpon>
     </Compile>

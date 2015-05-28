@@ -15,22 +15,33 @@ namespace WcfService1
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     public class Service1 : IService1
     {
-         //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-  
+        //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+
         public Stream GetData(User log)
         {
-            ControllerUsuario cont = new ControllerUsuario(log);
+            //ControllerUsuario cont = new ControllerUsuario(log);
 
+            Banner ban = new Banner();
+            Menu men = new Menu();
+
+            ban.setUser(log);
+            men.setmenu();
+            string ret = ban.banner + men.menubar;
+            object lal = new
+            {
+                campo = ret
+            };
             var s = new JavaScriptSerializer();
-            string jsonClient = s.Serialize(cont.UsuChk());
+            string jsonClient = s.Serialize(lal);
             WebOperationContext.Current.OutgoingResponse.ContentType =
                 "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
-            
+
         }
 
 
-        public Stream insUsr(User usr) {
+        public Stream insUsr(User usr)
+        {
 
             ControllerUsuario cont = new ControllerUsuario(usr);
 

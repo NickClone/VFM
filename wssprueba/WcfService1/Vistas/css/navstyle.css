@@ -1,0 +1,62 @@
+﻿@media (min-width: 768px) {
+  .navbar-collapse {
+    height: 100%;
+    border-top: 0;
+    box-shadow: none;
+    max-height: none;
+    padding-left:0;
+    padding-right:0;
+    color:chocolate;
+
+      
+  }
+  .navbar-collapse.collapse {
+    display: block !important;
+    width: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+
+  }
+  .navbar-collapse.in {
+    overflow-x: visible;
+         
+
+  }
+.navbar {
+    max-width:300px;
+    margin-right: 0;
+    margin-left: 0;
+
+}
+    
+.navbar .nav > li > a {
+    float: none;
+    line-height: 19px;
+    padding: 9px 10px 11px;
+    text-decoration: none;
+}
+
+.navbar-nav,
+.navbar-nav > li,
+.navbar-left,
+.navbar-right,
+.navbar-header
+{float:none !important;}
+
+.navbar-right .dropdown-menu {
+    left:0;right:auto;
+    color:bisque;
+}
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+}
+}
+#title  {
+    background-color:#F5C9D8;
+    width: 95%;
+/*    height: 100%;*/
+}
+
+.panel {
+    border: 0;
+}
