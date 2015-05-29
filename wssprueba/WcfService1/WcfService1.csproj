@@ -82,6 +82,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\AltaResidente.cs" />
     <Compile Include="clases\Banner.cs" />
     <Compile Include="clases\Conn.cs" />
     <Compile Include="clases\ControllerHabit.cs" />

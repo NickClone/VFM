@@ -46,17 +46,15 @@ function getMenuOpt() {
     $(".menuvar ul li a").click(function () {
         console.log($(this).attr('id'));
         if ($(this).attr('id') != 'drop') {
-            getform($(this).attr('id'));
+            getform('laldsa');
         }
     });
 
 }
 
-function getForm(idform) {
+function getform(idform) {
     var log = new Object();
-    log.Account = usr;
-    log.Password = pass;
-    $.ajax({
+     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/formres',
         headers: {
             'Accept': 'application/json',
@@ -68,7 +66,7 @@ function getForm(idform) {
         async: false
     }).done(function (data) {
         $("#forminy").empty();
-        $("#forminy").append(data);
+        $("#forminy").append(data.campo);
         console.log(data);
        
     });

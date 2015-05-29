@@ -26,7 +26,7 @@ namespace WcfService1
 
             ban.setUser(log);
             men.setmenu();
-            string ret = ban.banner + men.menubar;
+            string ret = ban.banner + men.menubar + "<div id='forminy'></div>";
             object lal = new
             {
                 campo = ret
