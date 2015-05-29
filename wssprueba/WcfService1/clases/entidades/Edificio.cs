@@ -4,12 +4,11 @@ using System.Linq;
 using System.Web;
 using WcfService1.clases.excepcions;
 
-
-
 public class Edificio
 {
         public Edificio(){
             cod_edif = 0;
+            edif_nombre = "";
             edif_calle = "";
             edif_num = 0;
             edif_cp = "";
@@ -20,9 +19,10 @@ public class Edificio
             Ldpto = new List<Dpto>();
             Lexp = new List<Expensa>();  
         }
-        public Edificio(int _cod_edif, string _edif_calle, decimal _edif_num, string _edif_cp, decimal _edif_country, decimal _edif_prov, decimal _edif_loc, decimal _estado, List<Dpto> _Ldpto,List<Expensa> _Lexp)		
+        public Edificio(int _cod_edif, string _edif_nombre, string _edif_calle, decimal _edif_num, string _edif_cp, decimal _edif_country, decimal _edif_prov, decimal _edif_loc, decimal _estado, List<Dpto> _Ldpto,List<Expensa> _Lexp)		
         {
             cod_edif = _cod_edif;
+            edif_nombre = _edif_nombre;
             edif_calle = _edif_calle;
             edif_num = _edif_num;
             edif_cp = _edif_cp;
@@ -36,6 +36,7 @@ public class Edificio
 
 
         public int cod_edif { get; set; }
+        public string edif_nombre { get; set; }
         public string edif_calle { get; set; }
         public decimal edif_num { get; set; }
         public string edif_cp { get; set; }

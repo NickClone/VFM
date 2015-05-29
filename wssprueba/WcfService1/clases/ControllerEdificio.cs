@@ -22,20 +22,21 @@ namespace WcfService1.clases
 
         public int Alta()
         {
-            int edif_id = 0;
+            edif.cod_edif = 0;
             edif.estado = 1;
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-                    query = "insert into vfm_edif values (";
+                    query = "insupdEdif ";
                     query = query + "'" + edif.edif_calle;
-                    query = query + "','" + edif.edif_country;
-                    query = query + "','" + edif.edif_cp;
-                    query = query + "','" + edif.edif_loc;
                     query = query + "','" + edif.edif_num;
+                    query = query + "','" + edif.edif_cp;
+                    query = query + "','" + edif.edif_country;
                     query = query + "','" + edif.edif_prov;
+                    query = query + "','" + edif.edif_loc;
                     query = query + "','" + edif.estado;
+                    query = query + "','" + edif.edif_nombre;
                     query = query + "')";
 
 
@@ -44,7 +45,7 @@ namespace WcfService1.clases
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        edif_id = reader.GetInt32(0);
+                        edif.cod_edif = reader.GetInt32(0);
                         conexion.Close();
                     }
                 }
@@ -56,7 +57,7 @@ namespace WcfService1.clases
             }
 
 
-            return edif_id;
+            return edif.cod_edif;
         }
 
     }

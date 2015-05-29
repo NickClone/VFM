@@ -17,6 +17,17 @@ namespace WcfService1
     {
         //[WebInvoke(UriTemplate = "/GetData/{dat}", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
 
+        public Stream AltaEdificio(Edificio ed)
+        {
+            ControllerEdificio contEdif = new ControllerEdificio(ed);
+
+            var s = new JavaScriptSerializer();
+            string jsonClient = s.Serialize(contEdif.Alta());
+            WebOperationContext.Current.OutgoingResponse.ContentType =
+                "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
+        }
+
         public Stream GetData(User log)
         {
             //ControllerUsuario cont = new ControllerUsuario(log);
@@ -40,7 +51,7 @@ namespace WcfService1
         }
 
         public Stream GetFormRes() //aca tenia (User usr) como parametro, pero del lado de la interfaz no tiene. se lo borre, ya que no 
-                                   //veo en el codigo que lo esté usando.
+                                   //veo en el codigo que lo esté usando tampoco.
         {
             //ControllerUsuario cont = new ControllerUsuario(log);
 
@@ -72,17 +83,6 @@ namespace WcfService1
                 "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
 
-        }
-
-        public Stream AltaEdificio(Edificio ed)
-        {
-            ControllerEdificio contEdif = new ControllerEdificio(ed);
-
-            var s = new JavaScriptSerializer();
-            string jsonClient = s.Serialize(contEdif.Alta());
-            WebOperationContext.Current.OutgoingResponse.ContentType =
-                "application/json; charset=utf-8";
-            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

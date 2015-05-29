@@ -17,6 +17,10 @@ namespace WcfService1
     {
 
         // [WebGet]
+        [OperationContract(Name = "AltaEdif")]
+        [WebInvoke(UriTemplate = "/AltaEdificio", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+        Stream AltaEdificio(Edificio ed);
+
         [OperationContract(Name = "data")]
         [WebInvoke(UriTemplate = "/GetData", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream GetData(User per);
@@ -28,11 +32,6 @@ namespace WcfService1
         [OperationContract(Name = "res")]
         [WebInvoke(UriTemplate = "/FormRes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream GetFormRes();
-
-        [OperationContract(Name = "AltaEdif")]
-        [WebInvoke(UriTemplate = "/AltaEdificio", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-        Stream AltaEdificio(Edificio ed);
-
 
         [OperationContract(Name = "lala")]
         CompositeType GetDataUsingDataContract(CompositeType composite);

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vistas\AltaEdificio.html" />
     <Content Include="Vistas\AltaUsuario.html" />
     <Content Include="Vistas\dist\css\bootstrap-theme.css" />
     <Content Include="Vistas\dist\css\bootstrap-theme.min.css" />
@@ -61,6 +62,7 @@
     <Content Include="Vistas\dist\js\bootstrap.js" />
     <Content Include="Vistas\dist\js\bootstrap.min.js" />
     <Content Include="Vistas\css\Images\woods-wallpaper.jpg" />
+    <Content Include="Vistas\js\AltaEdificio.js" />
     <Content Include="Vistas\js\control.js" />
     <Content Include="services\pages.svc" />
     <Content Include="main.html" />
