@@ -70,7 +70,7 @@ function getForm(idform) {
         $("#forminy").empty();
         $("#forminy").append(data);
         console.log(data);
-
+       
     });
     
 }
