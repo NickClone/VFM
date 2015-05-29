@@ -38,6 +38,27 @@ namespace WcfService1
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
 
         }
+        public Stream GetFormRes()
+        {
+            //ControllerUsuario cont = new ControllerUsuario(log);
+
+            AltaResidente AltaR = new AltaResidente();
+           
+
+            AltaR.setAltaresidente();
+           
+            string ret = AltaR.form;
+            object lal = new
+            {
+                campo = ret
+            };
+            var s = new JavaScriptSerializer();
+            string jsonClient = s.Serialize(lal);
+            WebOperationContext.Current.OutgoingResponse.ContentType =
+                "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
+
+        }
 
 
         public Stream insUsr(User usr)
