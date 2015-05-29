@@ -23,14 +23,14 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "     </div>";
             this.menubar = this.menubar + "  <div class='collapse navbar-collapse navbar-ex1-collapse'>";
             this.menubar = this.menubar + "    <ul class='nav navbar-nav'>";
-            this.menubar = this.menubar + "    <li><a href='#' id='btn-1' data-toggle='collapse' data-target='#submenu1' aria-expanded='false'>Expensas</a>";
+            this.menubar = this.menubar + "    <li><a href='#' id='drop' data-toggle='collapse' data-target='#submenu1' aria-expanded='false'>Expensas</a>";
             this.menubar = this.menubar + "      <ul class='active nav collapse' id='submenu1' role='menu' aria-labelledby='btn-1'>";
-            this.menubar = this.menubar + "        <li><a href='#'>Carga de expensas</a></li>";
+            this.menubar = this.menubar + "        <li><a href='#' id='cargaexp' >Carga de expensas</a></li>";
             this.menubar = this.menubar + "        <li><a href='#'>Morosos</a></li>";
             this.menubar = this.menubar + "        <li><a href='#'>Estado del mes</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "    </li>";
-            this.menubar = this.menubar + "    <li><a href='#' id='btn-1' data-toggle='collapse' data-target='#amen' aria-expanded='false'>Amenities</a>";
+            this.menubar = this.menubar + "    <li><a href='#' id='drop' data-toggle='collapse' data-target='#amen' aria-expanded='false'>Amenities</a>";
             this.menubar = this.menubar + "      <ul class='nav collapse' id='amen' role='menu' aria-labelledby='btn-1'>";
             this.menubar = this.menubar + "        <li><a href='#'>Pileta</a></li>";
             this.menubar = this.menubar + "        <li><a href='#'>Laundry</a></li>";
