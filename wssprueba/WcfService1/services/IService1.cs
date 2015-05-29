@@ -26,8 +26,8 @@ namespace WcfService1
         Stream insUsr(User usr);
 
         [OperationContract(Name = "res")]
-        [WebInvoke(UriTemplate = "/FormRes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-        Stream GetFormRes();
+        [WebInvoke(UriTemplate = "/formRes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+        Stream GetFormRes(User usr);
      
         [OperationContract(Name = "lala")]
         CompositeType GetDataUsingDataContract(CompositeType composite);

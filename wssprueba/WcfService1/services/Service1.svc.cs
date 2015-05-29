@@ -38,7 +38,7 @@ namespace WcfService1
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
 
         }
-        public Stream GetFormRes()
+        public Stream GetFormRes(User usr)
         {
             //ControllerUsuario cont = new ControllerUsuario(log);
 
