@@ -85,6 +85,7 @@
     <Compile Include="clases\AltaResidente.cs" />
     <Compile Include="clases\Banner.cs" />
     <Compile Include="clases\Conn.cs" />
+    <Compile Include="clases\ControllerEdificio.cs" />
     <Compile Include="clases\ControllerHabit.cs" />
     <Compile Include="clases\ControllerUsuario.cs" />
     <Compile Include="clases\entidades\Amen_hor.cs" />

@@ -38,7 +38,9 @@ namespace WcfService1
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
 
         }
-        public Stream GetFormRes(User usr)
+
+        public Stream GetFormRes() //aca tenia (User usr) como parametro, pero del lado de la interfaz no tiene. se lo borre, ya que no 
+                                   //veo en el codigo que lo esté usando.
         {
             //ControllerUsuario cont = new ControllerUsuario(log);
 
@@ -57,9 +59,7 @@ namespace WcfService1
             WebOperationContext.Current.OutgoingResponse.ContentType =
                 "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
-
         }
-
 
         public Stream insUsr(User usr)
         {
@@ -72,6 +72,17 @@ namespace WcfService1
                 "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
 
+        }
+
+        public Stream AltaEdificio(Edificio ed)
+        {
+            ControllerEdificio contEdif = new ControllerEdificio(ed);
+
+            var s = new JavaScriptSerializer();
+            string jsonClient = s.Serialize(contEdif.Alta());
+            WebOperationContext.Current.OutgoingResponse.ContentType =
+                "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
