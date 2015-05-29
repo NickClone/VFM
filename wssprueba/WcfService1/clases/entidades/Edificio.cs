@@ -12,14 +12,14 @@ public class Edificio
             edif_calle = "";
             edif_num = 0;
             edif_cp = "";
-            edif_country = 0;
-            edif_prov = 0;
-            edif_loc = 0;
+            edif_country = "";
+            edif_prov = "";
+            edif_loc = "";
             estado = 0;
             Ldpto = new List<Dpto>();
             Lexp = new List<Expensa>();  
         }
-        public Edificio(int _cod_edif, string _edif_nombre, string _edif_calle, decimal _edif_num, string _edif_cp, decimal _edif_country, decimal _edif_prov, decimal _edif_loc, decimal _estado, List<Dpto> _Ldpto,List<Expensa> _Lexp)		
+        public Edificio(int _cod_edif, string _edif_nombre, string _edif_calle, decimal _edif_num, string _edif_cp, string _edif_country, string _edif_prov, string _edif_loc, decimal _estado, List<Dpto> _Ldpto, List<Expensa> _Lexp)		
         {
             cod_edif = _cod_edif;
             edif_nombre = _edif_nombre;
@@ -40,9 +40,9 @@ public class Edificio
         public string edif_calle { get; set; }
         public decimal edif_num { get; set; }
         public string edif_cp { get; set; }
-        public decimal edif_country { get; set; }
-        public decimal edif_prov { get; set; }
-        public decimal edif_loc { get; set; }
+        public string edif_country { get; set; }
+        public string edif_prov { get; set; }
+        public string edif_loc { get; set; }
         public decimal estado { get; set; }
         public List<Dpto> Ldpto { get; set; }
         public List<Expensa> Lexp{ get; set; }

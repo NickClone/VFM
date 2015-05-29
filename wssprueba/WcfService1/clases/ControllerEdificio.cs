@@ -28,8 +28,9 @@ namespace WcfService1.clases
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-                    query = "insupdEdif ";
-                    query = query + "'" + edif.edif_calle;
+                    query =  "insupdEdif ";
+                    query = query + "'" + edif.cod_edif;
+                    query = query + "','" + edif.edif_calle;
                     query = query + "','" + edif.edif_num;
                     query = query + "','" + edif.edif_cp;
                     query = query + "','" + edif.edif_country;
@@ -37,7 +38,7 @@ namespace WcfService1.clases
                     query = query + "','" + edif.edif_loc;
                     query = query + "','" + edif.estado;
                     query = query + "','" + edif.edif_nombre;
-                    query = query + "')";
+                    query = query + "'";
 
 
                     SqlCommand cmd = new SqlCommand(query, conexion);

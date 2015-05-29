@@ -16,14 +16,14 @@ $(document).ready(function () {
 
 function insert(nombre, calle, num, cp, loc, prov, country) {
     var edi = new Object();
-//    edi.edif_nombre = nombre;
+    edi.edif_nombre = nombre;
 //    edi.edif_calle = calle;
 //    edi.edif_num = num;
 //    edi.edif_cp = cp;
 //    edi.edif_loc = loc;
 //    edi.edif_prov = prov;
 //    edi.edif_country = country;
-    edi.edif_nombre = "";
+
     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/AltaEdificio',
         headers: {
