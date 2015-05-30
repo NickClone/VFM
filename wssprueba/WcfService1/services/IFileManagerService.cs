@@ -14,13 +14,15 @@ namespace WcfService1.services
     public interface IFileManagerService
     {
 
+        [OperationContract(Name = "Upload")]
+        [WebInvoke(UriTemplate = "UploadFile", Method = "POST")]
+        void UploadFile();
+
+
         [OperationContract(Name = "Retrieve")]
         [WebGet(UriTemplate = "RetrieveFile?Path={path}")]
         Stream RetrieveFile(string path);
 
-        [OperationContract(Name = "Upload")]
-        [WebInvoke(UriTemplate = "UploadFile", Method = "POST")]
-        void UploadFile(Stream stream);
 
     }  
 }

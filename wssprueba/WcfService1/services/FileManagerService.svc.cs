@@ -26,11 +26,12 @@ namespace WcfService1.services
             return File.OpenRead(path);
         }
 
-        public void UploadFile(Stream stream)
+        public void UploadFile()
         {
+            //Stream stream = new Stream();
             using (var file = File.Create("C:\\gitHub\\VFM\\wssprueba\\WcfService1\\Upload\\test.txt"))
             {
-                stream.CopyTo(file);
+               // stream.CopyTo(file);
             }
         }
 
