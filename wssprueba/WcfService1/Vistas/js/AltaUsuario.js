@@ -15,9 +15,9 @@ $(document).ready(function () {
 });
 
 function insert(nombre, apellido, account, password, tel, /*Fnac,*/ Sexo) {
-
-    var usr = new Object();
+var usr = new Object();
     //usr.id = id;
+    
     usr.Nombre = nombre;
     usr.Apellido = apellido;
     usr.Account = account;

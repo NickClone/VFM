@@ -53,8 +53,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="services\FileManagerService.svc" />
     <Content Include="Vistas\AltaEdificio.html" />
     <Content Include="Vistas\AltaUsuario.html" />
+    <Content Include="Vistas\js\SubirExpensa.js" />
+    <Content Include="Vistas\SubirExpensa.html" />
     <Content Include="Vistas\dist\css\bootstrap-theme.css" />
     <Content Include="Vistas\dist\css\bootstrap-theme.min.css" />
     <Content Include="Vistas\dist\css\bootstrap.css" />
@@ -101,6 +104,10 @@
     <Compile Include="clases\entidades\Habitante.cs" />
     <Compile Include="clases\entidades\Login.cs" />
     <Compile Include="clases\Menu.cs" />
+    <Compile Include="services\FileManagerService.svc.cs">
+      <DependentUpon>FileManagerService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="services\IFileManagerService.cs" />
     <Compile Include="services\pages.svc.cs">
       <DependentUpon>pages.svc</DependentUpon>
     </Compile>
@@ -114,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Vistas\dist\fonts\glyphicons-halflings-regular.eot" />
