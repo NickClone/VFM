@@ -15,10 +15,8 @@ public class User
             Account="";
             Password="";
             Tel = "";
-            FechaNacimiento = DateTime.MinValue;
+            FechaNacimiento = "";
             Sexo = ' ';
-            FechaRegistracion = DateTime.MinValue;
-            FechaActualizacion = DateTime.MinValue;
             Estado = 0;
         }
         public User(int _id,string _nombre,string _apellido)
@@ -29,10 +27,8 @@ public class User
             Account = "";
             Password = "";
             Tel = "";
-            FechaNacimiento = DateTime.MinValue;
+            FechaNacimiento = "";
             Sexo = ' ';
-            FechaRegistracion = DateTime.MinValue;
-            FechaActualizacion = DateTime.MinValue;
             Estado = 0;
         }
 
@@ -44,10 +40,8 @@ public class User
         public string Account { get; set; }
         public string Tel { get; set; }
         public string Password { get; set; }
-        public DateTime FechaNacimiento { get; set; }
+        public string FechaNacimiento { get; set; }
         public char Sexo { get; set; }
-        public DateTime FechaRegistracion { get; set; }
-        public Nullable<DateTime> FechaActualizacion { get; set; }
         public int Estado{get;set;}
 
 
@@ -57,7 +51,6 @@ public class User
                 Apellido.Trim() == "" ||
                 Account.Trim() == "" ||
                 Password.Trim() == "" ||
-                FechaNacimiento == DateTime.MinValue ||
                 Sexo == ' ')
             {
                 throw new DatosFaltantesEx();

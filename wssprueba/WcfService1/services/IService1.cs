@@ -29,6 +29,10 @@ namespace WcfService1
         [WebInvoke(UriTemplate = "/insUsr", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream insUsr(User usr);
 
+        [OperationContract(Name = "hab")]
+        [WebInvoke(UriTemplate = "/insHab", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+        Stream insHab(Habitante hab);
+
         [OperationContract(Name = "res")]
         [WebInvoke(UriTemplate = "/FormRes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream GetFormRes();
