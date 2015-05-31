@@ -48,50 +48,80 @@ namespace WcfService1.clases
                     {
                         reader.Read();
                         edif.cod_edif = reader.GetInt32(0);
+                        reader.Close();
 
-                        int i = 0;
-                        int j = 1;
+                        var pbsi=0;    
                         int ASCII = 49;
                         //defino si tengo deptos en PB o no
                         if (edif.edif_tienepb)
                         {
-                            i = 1;
+                            pbsi = 0;
+                        }
+                        else {
+                            pbsi = 1;
+                        }
+                        if (edif.edif_deptoletra == 'l') {
+
+                            ASCII = 65;
+                        
+                        }
+
+                        for (int i = pbsi; i <= edif.edif_cantpisos;i++ ) {
+
+                           
+        
+                            for (int j = 1; j <= edif.edif_deptosxpiso; j++) {
+
+                                query = "insert into vfm_departamento values (";
+                                query = query + "'" + edif.cod_edif;
+                                query = query + "','" + i;
+                                query = query + "','" + char.ConvertFromUtf32(ASCII);
+                                query = query + "')";
+
+                                cmd.CommandText = query;
+                                cmd.ExecuteNonQuery();
+
+                                ASCII++;
+                                      
+                            }
+
+                            ASCII = ASCII - edif.edif_deptosxpiso;
                         }
 
                         //defino si los deptos usan nombre con letra o solo numeracion
                         //si son numeros
-                        if (edif.edif_deptoletra == 'l')
-                        {
-                            ASCII = 65;
-                            //ciclo por cada piso
-                            while (i <= edif.edif_cantpisos)
-                            {
-                                //ciclo por cada depto
-                                while (j <= edif.edif_deptosxpiso)
-                                {
-                                    query = "insert into vfm_departamento values (";
-                                    query = query + "'" + edif.cod_edif;
-                                    query = query + "','" + i;
-                                    query = query + "','" + char.ConvertFromUtf32(ASCII);
-                                    query = query + "')";
+                        //if (edif.edif_deptoletra == 'l')
+                        //{
+                        //    ASCII = 65;
+                        //    //ciclo por cada piso
+                        //    while (i <= edif.edif_cantpisos)
+                        //    {
+                        //        //ciclo por cada depto
+                        //        while (j <= edif.edif_deptosxpiso)
+                        //        {
+                        //            query = "insert into vfm_departamento values (";
+                        //            query = query + "'" + edif.cod_edif;
+                        //            query = query + "','" + i;
+                        //            query = query + "','" + char.ConvertFromUtf32(ASCII);
+                        //            query = query + "')";
 
-                                    cmd.CommandText = query;
-                                    cmd.ExecuteNonQuery();
+                        //            cmd.CommandText = query;
+                        //            cmd.ExecuteNonQuery();
 
-                                    ASCII++;
-                                    j++;
-                                }
-                                if (edif.edif_deptoletra == 'l')
-                                {
-                                    ASCII = 97;
-                                }
-                                else
-                                {
-                                    ASCII = 49;
-                                }
-                                i++;
-                            }
-                        }
+                        //            ASCII++;
+                        //            j++;
+                        //        }
+                        //        if (edif.edif_deptoletra == 'l')
+                        //        {
+                        //            ASCII = 97;
+                        //        }
+                        //        else
+                        //        {
+                        //            ASCII = 49;
+                        //        }
+                        //        i++;
+                        //    }
+                        //}
 
                     }
 
@@ -100,9 +130,9 @@ namespace WcfService1.clases
             }
 
 
-            catch
+            catch (Exception ex)
             {
-
+                return 3;
             }
 
             return edif.cod_edif;
