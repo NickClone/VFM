@@ -84,7 +84,7 @@ namespace WcfService1.clases
                         usr.Apellido = reader2.GetString(7);
                         
                         conexion.Close();
-                                              
+                        reader2.Close();                      
                     }
 
                     return usr;
