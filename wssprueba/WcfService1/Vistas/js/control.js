@@ -54,7 +54,7 @@ function getMenuOpt() {
 
 function getform(idform) {
     var log = new Object();
-     $.ajax({
+    $.ajax({
         url: 'http://localhost:1066/services/service1.svc/formres',
         headers: {
             'Accept': 'application/json',
@@ -68,7 +68,68 @@ function getform(idform) {
         $("#forminy").empty();
         $("#forminy").append(data.campo);
         console.log(data);
-       
+
+        Resident();
+
     });
-    
+
+}
+
+function Resident(e) {
+
+    e.preventdefault();
+    $("#crearUsr").click(function () {
+
+        insert(
+        $("#nomUsr").val(),
+        $("#apeUsr").val(),
+        $("#mailusr").val(),
+        $("#PassUsr").val(),
+        $("#telUsr").val(),
+        $("#fnUsr").val(),
+        $("#sexUsr").val()
+        );
+
+    });
+
+}
+
+function insert(nombre, apellido, account, password, tel, Fnac, Sexo) {
+    var usr = new Object();
+    //usr.id = id;
+
+    usr.Nombre = nombre;
+    usr.Apellido = apellido;
+    usr.Account = account;
+    usr.Password = password;
+    usr.Tel = tel;
+    usr.Sexo = Sexo;
+    usr.Id_edif = 1;
+    usr.rol = 2;
+    usr.Piso = "2";
+    usr.Dpto = "B";
+
+    usr.FechaNacimiento = Fnac;
+    //usr.FechaRegistracion = Freg;
+    //usr.FechaActualizacion = Fact;
+    //usr.Estado = estado;
+    $.ajax({
+        url: 'http://localhost:1066/services/service1.svc/insHab',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: 'POST',
+        dataType: 'JSON',
+        data: JSON.stringify(usr),
+        async: false
+    }).done(function (data) {
+
+        alert("ID de nuevo usuario es: ");
+        alert(data);
+
+
+    });
+
+
 }
