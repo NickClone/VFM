@@ -24,11 +24,12 @@ namespace WcfService1.clases
         {
             edif.cod_edif = 0;
             edif.estado = 1;
+
             try
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-                    query =  "insupdEdif ";
+                    query = "insupdEdif ";
                     query = query + "'" + edif.cod_edif;
                     query = query + "','" + edif.edif_calle;
                     query = query + "','" + edif.edif_num;
@@ -47,18 +48,65 @@ namespace WcfService1.clases
                     {
                         reader.Read();
                         edif.cod_edif = reader.GetInt32(0);
-                        conexion.Close();
-                    }
-                }
 
+                        int i = 0;
+                        int j = 1;
+                        int ASCII = 49;
+                        //defino si tengo deptos en PB o no
+                        if (edif.edif_tienepb)
+                        {
+                            i = 1;
+                        }
+
+                        //defino si los deptos usan nombre con letra o solo numeracion
+                        //si son numeros
+                        if (edif.edif_deptoletra == 'l')
+                        {
+                            ASCII = 65;
+                            //ciclo por cada piso
+                            while (i <= edif.edif_cantpisos)
+                            {
+                                //ciclo por cada depto
+                                while (j <= edif.edif_deptosxpiso)
+                                {
+                                    query = "insert into vfm_departamento values (";
+                                    query = query + "'" + edif.cod_edif;
+                                    query = query + "','" + i;
+                                    query = query + "','" + char.ConvertFromUtf32(ASCII);
+                                    query = query + "')";
+
+                                    cmd.CommandText = query;
+                                    cmd.ExecuteNonQuery();
+
+                                    ASCII++;
+                                    j++;
+                                }
+                                if (edif.edif_deptoletra == 'l')
+                                {
+                                    ASCII = 97;
+                                }
+                                else
+                                {
+                                    ASCII = 49;
+                                }
+                                i++;
+                            }
+                        }
+
+                    }
+
+                    conexion.Close();
+                }
             }
+
+
             catch
             {
 
             }
 
-
             return edif.cod_edif;
+
         }
 
     }

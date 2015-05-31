@@ -1,34 +1,43 @@
 $(document).ready(function () {
     $("#edif_btn").click(function () {
-    alert("funciona")
         insert(
         $("#edif_nombre").val(),
         $("#edif_calle").val(),
         $("#edif_num").val(),
         $("#edif_cp").val(),
+        $("#edif_cantpisos").val(),
+        $("#edif_deptosxpiso").val(),
+        $("edif_TienePB").val(),
+        $("edif_DeptoLetra").val(),
         $("#edif_loc").val(),
         $("#edif_prov").val(),
-        $("#edif_country").val() 
+        $("#edif_country").val()
         );
 
     });
 });
 
-function insert(nombre, calle, num, cp, loc, prov, country) {
+function insert(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country) {
     var edi = new Object();
+    console.log(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country);
+
     edi.edif_nombre = nombre;
-//    edi.edif_calle = calle;
-//    edi.edif_num = num;
-//    edi.edif_cp = cp;
-//    edi.edif_loc = loc;
-//    edi.edif_prov = prov;
-//    edi.edif_country = country;
+    edi.edif_calle = calle;
+    edi.edif_num = num;
+    edi.edif_cp = cp;
+    edi.edif_cantpisos = cantpisos;
+    edi.edif_deptosxpiso = deptosxpiso;
+    edi.edif_tienepb = tienepb;
+    edi.edif_deptoletra = deptoletra;
+    edi.edif_loc = loc;
+    edi.edif_prov = prov;
+    edi.edif_country = country;
 
     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/AltaEdificio',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'  
+            'Content-Type': 'application/json'
         },
         type: 'POST',
         dataType: 'JSON',
@@ -37,7 +46,7 @@ function insert(nombre, calle, num, cp, loc, prov, country) {
     }).done(function (data) {
 
         alert("ID de nuevo Edificio es: " +
-           "\n"+data);
+           "\n" + data);
     });
 
 }
