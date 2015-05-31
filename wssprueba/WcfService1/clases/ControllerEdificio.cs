@@ -19,6 +19,10 @@ namespace WcfService1.clases
             this.edif = ed;
             query = "";
         }
+        public void getEdifbyId(int id) { 
+        
+        
+        }
 
         public int Alta()
         {
@@ -87,41 +91,6 @@ namespace WcfService1.clases
 
                             ASCII = ASCII - edif.edif_deptosxpiso;
                         }
-
-                        //defino si los deptos usan nombre con letra o solo numeracion
-                        //si son numeros
-                        //if (edif.edif_deptoletra == 'l')
-                        //{
-                        //    ASCII = 65;
-                        //    //ciclo por cada piso
-                        //    while (i <= edif.edif_cantpisos)
-                        //    {
-                        //        //ciclo por cada depto
-                        //        while (j <= edif.edif_deptosxpiso)
-                        //        {
-                        //            query = "insert into vfm_departamento values (";
-                        //            query = query + "'" + edif.cod_edif;
-                        //            query = query + "','" + i;
-                        //            query = query + "','" + char.ConvertFromUtf32(ASCII);
-                        //            query = query + "')";
-
-                        //            cmd.CommandText = query;
-                        //            cmd.ExecuteNonQuery();
-
-                        //            ASCII++;
-                        //            j++;
-                        //        }
-                        //        if (edif.edif_deptoletra == 'l')
-                        //        {
-                        //            ASCII = 97;
-                        //        }
-                        //        else
-                        //        {
-                        //            ASCII = 49;
-                        //        }
-                        //        i++;
-                        //    }
-                        //}
 
                     }
 
