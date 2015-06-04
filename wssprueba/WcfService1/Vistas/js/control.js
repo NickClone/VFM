@@ -68,7 +68,7 @@ function getform(idform) {
         $("#forminy").empty();
         $("#forminy").append(data.campo);
         console.log(data);
-
+        alert("entre")
         Resident();
 
     });
@@ -77,7 +77,7 @@ function getform(idform) {
 
 function Resident(e) {
 
-    e.preventdefault();
+//    e.preventdefault();
     $("#crearUsr").click(function () {
 
         insert(

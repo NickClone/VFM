@@ -56,9 +56,7 @@ namespace WcfService1
             //ControllerUsuario cont = new ControllerUsuario(log);
 
             AltaResidente AltaR = new AltaResidente();
-           
 
-            AltaR.setAltaresidente();
            
             string ret = AltaR.form;
             object lal = new

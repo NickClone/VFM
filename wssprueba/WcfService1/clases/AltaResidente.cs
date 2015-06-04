@@ -9,7 +9,8 @@ namespace WcfService1.clases
     {
         public string form{get;set;}
 
-        public AltaResidente() {
+        public AltaResidente()
+        {
             this.form = "<form class='form-horizontal'>";
             this.form = this.form + "<fieldset>";
             this.form = this.form + "<legend>Alta Residente</legend>";
@@ -113,7 +114,7 @@ namespace WcfService1.clases
             this.form = this.form + "<div class='form-group'>";
             this.form = this.form + "  <label class='col-md-4 control-label' for='crearUsr'></label>";
             this.form = this.form + "  <div class='col-md-4'>";
-            this.form = this.form + "    <type='button' id='crearUsr' name='crearUsr' class='btn btn-primary' value='Generar'";
+            this.form = this.form + "    <input type='button' id='crearUsr' name='crearUsr' class='btn btn-primary' value='Generar'";
             this.form = this.form + "  </div>";
             this.form = this.form + "</div>";
 
