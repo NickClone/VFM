@@ -16,6 +16,14 @@ namespace WcfService1.clases
             Dpto = "";
             FechaRegHabit = DateTime.MinValue;
         }
+        public Habitante(User usr): base(usr)
+        {
+            Id_edif = 0;
+            rol = 0;
+            Piso = "";
+            Dpto = "";
+            FechaRegHabit = DateTime.MinValue;
+        }
 
  
         public int Id_edif { get; set; }

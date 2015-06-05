@@ -30,9 +30,11 @@ namespace WcfService1
 
         public Stream GetData(User log)
         {
-            //ControllerUsuario cont = new ControllerUsuario(log);
+            ControllerUsuario cont = new ControllerUsuario(log);
 
-            Banner ban = new Banner();
+            cont.UsuChk();
+
+            Banner ban = new Banner(cont.UsuChk());
             Menu men = new Menu();
 
             ban.setUser(log);

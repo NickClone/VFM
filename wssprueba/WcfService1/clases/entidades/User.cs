@@ -17,7 +17,22 @@ public class User
             Tel = "";
             FechaNacimiento = "";
             Sexo = ' ';
+            Perfil = "";
             Estado = 0;
+        }
+        public User(User usr)
+        {
+            Id = usr.Id;
+            Nombre = usr.Nombre;
+            Apellido = usr.Apellido;
+            Account = usr.Account;
+            Password = usr.Password;
+            Tel = usr.Tel;
+            FechaNacimiento = usr.FechaNacimiento;
+            Sexo = usr.Sexo;
+            Estado = usr.Estado;
+            Perfil = usr.Perfil;
+            
         }
         public User(int _id,string _nombre,string _apellido)
         {
@@ -30,6 +45,7 @@ public class User
             FechaNacimiento = "";
             Sexo = ' ';
             Estado = 0;
+            Perfil = "";
         }
 
 
@@ -43,7 +59,7 @@ public class User
         public string FechaNacimiento { get; set; }
         public char Sexo { get; set; }
         public int Estado{get;set;}
-
+        public string Perfil { get; set; }
 
         public void ValidarDatos()
         {

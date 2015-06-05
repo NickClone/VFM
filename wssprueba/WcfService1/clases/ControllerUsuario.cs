@@ -73,27 +73,56 @@ namespace WcfService1.clases
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     SqlDataReader reader2 = cmd.ExecuteReader();
 
-                    if ( reader2.HasRows )
+                    if (reader2.HasRows)
                     {
                         reader2.Read();
-                        usr = new User();
+//                        usr = new User();
                         usr.Id = reader2.GetInt32(0);
                         usr.Account = reader2.GetString(1);
                         usr.Nombre = reader2.GetString(3);
-                        usr.Tel = reader2.GetString(5);
-                        usr.Apellido = reader2.GetString(7);
-                        
-                        conexion.Close();
-                        reader2.Close();                      
+                        usr.Apellido = reader2.GetString(4);
+                        usr.Tel = reader2.GetString(6);
+                        usr.Perfil = reader2.GetString(11).Trim();
+                        reader2.Close();
+
+                        if (usr.Perfil == "1") {
+                            Habitante habit = new Habitante(usr);
+
+
+                            query = "select * from vfm_habit where cod_usu = '" + usr.Id + "'";
+
+                            cmd.CommandText = query;
+                            reader2 = cmd.ExecuteReader();
+                            if (reader2.HasRows)
+                            {
+                                reader2.Read();
+                                habit.Id_edif = reader2.GetInt32(0);
+                                habit.Piso = reader2.GetString(3);
+                                habit.Dpto = reader2.GetString(4);
+                            }
+                            conexion.Close();
+                            reader2.Close();
+                            User u = (User)habit;
+                            usr.GetType().DeclaringType.ToString();   
+                        }
+                    
+                    
+                    
+                    
+                    
+                    
                     }
+                    
+
 
                     return usr;
+
+
                 }
             }
-            catch {
-
-                return usr;    
-            
+            catch (Exception ex)
+            {
+                throw new ExceptionGen("Se produjo un error al loggear", ex);
             }
 
         }
