@@ -102,20 +102,20 @@ namespace WcfService1.clases
                             }
                             conexion.Close();
                             reader2.Close();
-                            User u = (User)habit;
-                            usr.GetType().DeclaringType.ToString();   
+
+                            return (User)habit;
                         }
-                    
-                    
-                    
-                    
+
+
+
+                        
                     
                     
                     }
-                    
 
 
                     return usr;
+                    
 
 
                 }

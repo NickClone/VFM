@@ -32,7 +32,7 @@ namespace WcfService1
         {
             ControllerUsuario cont = new ControllerUsuario(log);
 
-            cont.UsuChk();
+//            cont.UsuChk();
 
             Banner ban = new Banner(cont.UsuChk());
             Menu men = new Menu();
