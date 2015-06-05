@@ -85,7 +85,8 @@ namespace WcfService1.clases
                         usr.Perfil = reader2.GetString(11).Trim();
                         reader2.Close();
 
-                        if (usr.Perfil == "1") {
+                        if (usr.Perfil == "1")
+                        {
                             Habitante habit = new Habitante(usr);
 
 
@@ -105,12 +106,27 @@ namespace WcfService1.clases
 
                             return (User)habit;
                         }
+                        if (usr.Perfil == "2") {
 
+                            Administrator Admin = new Administrator(usr);
 
+                            query = "select * from administracion where id = '" + usr.Id + "'";
 
-                        
-                    
-                    
+                            cmd.CommandText = query;
+                            reader2 = cmd.ExecuteReader();
+                            if (reader2.HasRows)
+                            {
+                                reader2.Read();
+                                Admin.Nom_Company = reader2.GetString(1);
+                                Admin.horario_consul = reader2.GetString(2);
+                            }
+                            conexion.Close();
+                            reader2.Close();
+
+                            return (User)Admin;
+                        }
+
+                  
                     }
 
 

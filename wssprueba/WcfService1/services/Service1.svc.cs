@@ -37,7 +37,7 @@ namespace WcfService1
             Banner ban = new Banner(cont.UsuChk());
             Menu men = new Menu();
 
-            ban.setUser(log);
+            //ban.setUser(log);
             men.setmenu();
             string ret = ban.banner + men.menubar + "<div id='forminy'></div>";
             object lal = new
