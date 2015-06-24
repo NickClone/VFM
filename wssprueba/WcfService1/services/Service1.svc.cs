@@ -31,39 +31,39 @@ namespace WcfService1
         public Stream GetData(User log)
         {
             ControllerUsuario cont = new ControllerUsuario(log);
+            string ret = null;
+            User Usuario = cont.UsuChk();
 
-            //            cont.UsuChk();
-
-            Banner ban = new Banner(cont.UsuChk());
-          //  Banner ban = new Banner(log);
-            Menu men = new Menu();
-          // ban.setUser(log);
-            men.setmenu();
-            string ret = ban.banner + men.menubar + "<div id='forminy'></div>";
+            if (Usuario != null)
+            {
+                Banner ban = new Banner(Usuario);
+                Menu men = new Menu(Usuario);
+                ret = ban.banner + men.menubar + "<div id='forminy'></div>";
+            }
             object lal = new
             {
                 campo = ret
             };
+
             var s = new JavaScriptSerializer();
             string jsonClient = s.Serialize(lal);
             WebOperationContext.Current.OutgoingResponse.ContentType =
-                "application/json; charset=utf-8";
+            "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
-
         }
 
-        public Stream GetFormRes() //aca tenia (User usr) como parametro, pero del lado de la interfaz no tiene. se lo borre, ya que no 
+        public Stream GetFormRes(RequestForm ReqForm) //aca tenia (User usr) como parametro, pero del lado de la interfaz no tiene. se lo borre, ya que no 
         //veo en el codigo que lo esté usando tampoco.
         {
+            IForm form = null;
             //ControllerUsuario cont = new ControllerUsuario(log);
+            FormFactory FormFact = new FormFactory();
+            form = FormFact.CreateForm(ReqForm.FormTipo);
 
-            AltaResidente AltaR = new AltaResidente();
-
-
-            string ret = AltaR.form;
+            
             object lal = new
             {
-                campo = ret
+                campo = form.ReturnForm()
             };
             var s = new JavaScriptSerializer();
             string jsonClient = s.Serialize(lal);

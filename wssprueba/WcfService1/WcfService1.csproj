@@ -142,7 +142,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clases\AltaResidente.cs" />
+    <Compile Include="clases\entidades\RequestForm.cs" />
+    <Compile Include="clases\FormAltaResidente.cs" />
     <Compile Include="clases\Banner.cs" />
     <Compile Include="clases\Conn.cs" />
     <Compile Include="clases\ControllerEdificio.cs" />
@@ -161,7 +162,8 @@
     <Compile Include="clases\entidades\Habitante.cs" />
     <Compile Include="clases\entidades\Login.cs" />
     <Compile Include="clases\FormExpensa.cs" />
-    <Compile Include="clases\FormManager.cs" />
+    <Compile Include="clases\FormFactory.cs" />
+    <Compile Include="clases\IForm.cs" />
     <Compile Include="clases\Menu.cs" />
     <Compile Include="services\FileManagerService.svc.cs">
       <DependentUpon>FileManagerService.svc</DependentUpon>

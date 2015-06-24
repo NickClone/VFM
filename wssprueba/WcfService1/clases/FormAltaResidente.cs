@@ -5,11 +5,11 @@ using System.Web;
 
 namespace WcfService1.clases
 {
-    public class AltaResidente
+    public class FormAltaResidente : IForm
     {
         public string form{get;set;}
 
-        public AltaResidente()
+        public FormAltaResidente()
         {
             this.form = "<form class='form-horizontal'>";
             this.form = this.form + "<fieldset>";
@@ -237,6 +237,11 @@ namespace WcfService1.clases
 
         }
 
+        public string ReturnForm() {
+
+            return this.form;
+        
+        }
 
 
     }
