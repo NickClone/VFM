@@ -37,6 +37,10 @@ namespace WcfService1
         [WebInvoke(UriTemplate = "/FormRes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream GetFormRes();
 
+        [OperationContract(Name = "exp")]
+        [WebInvoke(UriTemplate = "/exp", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+        Stream SetExpensas(Expensa exp);
+
         [OperationContract(Name = "lala")]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 

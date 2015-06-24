@@ -19,28 +19,24 @@ namespace WcfService1.clases
         
 
         
-        public string insupHabit()
-        {
+        public string insupHabit()        {
             ControllerUsuario contU = new ControllerUsuario(habit);
             string query;
-            try
-            {
+            int ret = 0;
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
 
                    var num =  contU.insupdata();
-                    query = "insupdHabit " + habit.Id_edif + "," + num + "," + habit.rol + ",'" + habit.Piso + "','" + habit.Dpto + "'" ;
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.ExecuteNonQuery();
+                   query = "insupdHabit " + habit.Id_edif + "," + num + "," + habit.rol + ",'" + habit.Piso + "','" + habit.Dpto + "'" ;
+                   SqlCommand cmd = new SqlCommand(query, conexion);
+                   ret=cmd.ExecuteNonQuery();
+                   if (ret > 0)
+                   {
 
-                    return "hola";
+                   }
                 }
 
-            }
-            catch (Exception ex)
-            {
-                throw new ExceptionGen("Se produjo un error al crear el usuario.", ex);
-            }
+                return "lalal";
 
         }
 

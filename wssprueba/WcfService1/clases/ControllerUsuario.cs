@@ -76,7 +76,7 @@ namespace WcfService1.clases
                     if (reader2.HasRows)
                     {
                         reader2.Read();
-//                        usr = new User();
+                        //                        usr = new User();
                         usr.Id = reader2.GetInt32(0);
                         usr.Account = reader2.GetString(1);
                         usr.Nombre = reader2.GetString(3);
@@ -106,7 +106,8 @@ namespace WcfService1.clases
 
                             return (User)habit;
                         }
-                        if (usr.Perfil == "2") {
+                        if (usr.Perfil == "2")
+                        {
 
                             Administrator Admin = new Administrator(usr);
 
@@ -126,12 +127,12 @@ namespace WcfService1.clases
                             return (User)Admin;
                         }
 
-                  
+
                     }
 
 
                     return usr;
-                    
+
 
 
                 }

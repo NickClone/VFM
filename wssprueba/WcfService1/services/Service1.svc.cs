@@ -32,12 +32,12 @@ namespace WcfService1
         {
             ControllerUsuario cont = new ControllerUsuario(log);
 
-//            cont.UsuChk();
+            //            cont.UsuChk();
 
             Banner ban = new Banner(cont.UsuChk());
+          //  Banner ban = new Banner(log);
             Menu men = new Menu();
-
-            //ban.setUser(log);
+          // ban.setUser(log);
             men.setmenu();
             string ret = ban.banner + men.menubar + "<div id='forminy'></div>";
             object lal = new
@@ -53,13 +53,13 @@ namespace WcfService1
         }
 
         public Stream GetFormRes() //aca tenia (User usr) como parametro, pero del lado de la interfaz no tiene. se lo borre, ya que no 
-                                   //veo en el codigo que lo esté usando tampoco.
+        //veo en el codigo que lo esté usando tampoco.
         {
             //ControllerUsuario cont = new ControllerUsuario(log);
 
             AltaResidente AltaR = new AltaResidente();
 
-           
+
             string ret = AltaR.form;
             object lal = new
             {
@@ -110,6 +110,14 @@ namespace WcfService1
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public Stream SetExpensas(Expensa exp)
+        {
+
+
+            return null;
+
         }
     }
 }
