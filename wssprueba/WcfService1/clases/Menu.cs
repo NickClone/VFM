@@ -13,7 +13,7 @@ namespace WcfService1.clases
 
             this.menubar = "<div class='col-md-2 menuvar'><nav class='navbar nav-pills nav-stacked span3 navbar-default ' role='navigation'>";
             this.menubar = this.menubar + "     <div class='navbar-header'>";
-            this.menubar = this.menubar + "          <a class='navbar-brand' href=''>Edificio</a>";
+            this.menubar = this.menubar + "          <a class='navbar-brand' href='#' id = 'edificio'>Edificio</a>";
             this.menubar = this.menubar + "            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>"; ;
             this.menubar = this.menubar + "                <span class='icon-bar'></span>";
             this.menubar = this.menubar + "                <span class='icon-bar'></span>";
@@ -37,8 +37,8 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "        <li><a href='#'>Cochera</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "    </li>";
-            this.menubar = this.menubar + "      <li ><a href=''>Alta Usuario</a></li>";
-            this.menubar = this.menubar + "      <li ><a href=''>Baja Usuario</a></li>";
+            this.menubar = this.menubar + "      <li ><a href='#' id ='altaUsr'>Alta Usuario</a></li>";
+            this.menubar = this.menubar + "      <li ><a href='#' id ='bajaUsr'>Baja Usuario</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "  </div>";
             this.menubar = this.menubar + "</nav>";

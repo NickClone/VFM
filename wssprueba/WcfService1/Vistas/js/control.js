@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    
+   var optmenu;
     $("#but").click(function () {
         login($("#name").val(), $("#pwd").val());
     });
-   
- 
+
+
 });
 function insertedif(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country) {
     var edi = new Object();
@@ -87,7 +87,7 @@ function getMenuOpt() {
     $(".menuvar ul li a").click(function () {
         console.log($(this).attr('id'));
         if ($(this).attr('id') != 'drop') {
-            getform('laldsa');
+            getform($(this).attr('id'));
         }
     });
 
@@ -96,7 +96,7 @@ function getMenuOpt() {
 function getform(idform) {
     var log = new Object();
     log.IdRequestor = $("#mhdnId").val();
-    log.FormTipo = 1;
+    log.FormTipo = getTipo(idform);
     log.data = '';
 
     $.ajax({
@@ -110,40 +110,22 @@ function getform(idform) {
         data: JSON.stringify(log),
         async: false
     }).done(function (data) {
-        loadEvents();
-        //formfunctions();
+        
         $("#forminy").empty();
         $("#forminy").append(data.campo);
+        loadEvents();
         console.log(data);
-       // alert("entre");
-        //  Resident();
     });
-   
-
 }
 
 function Resident(e) {
-
-//    e.preventdefault();
     $("#crearUsr").click(function () {
-
-        insert(
-        $("#nomUsr").val(),
-        $("#apeUsr").val(),
-        $("#mailusr").val(),
-        $("#PassUsr").val(),
-        $("#telUsr").val(),
-        $("#fnUsr").val(),
-        $("#sexUsr").val()
-        );
-
+        insert( $("#nomUsr").val(), $("#apeUsr").val(), $("#mailusr").val(), $("#PassUsr").val(), $("#telUsr").val(),$("#fnUsr").val(),$("#sexUsr").val());
     });
 
 }
 function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
     var usr = new Object();
-    //usr.id = id;
-
     usr.Nombre = nombre;
     usr.Apellido = apellido;
     usr.Account = account;
@@ -154,7 +136,6 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
     usr.rol = 2;
     usr.Piso = "2";
     usr.Dpto = "B";
-
     usr.FechaNacimiento = Fnac;
     //usr.FechaRegistracion = Freg;
     //usr.FechaActualizacion = Fact;
@@ -177,10 +158,7 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
     });
 
 }
-
 function loadEvents() {
-
-    alert("entreOADsadasd");
     $("#crearUsr").click(function () {
 
         insertUsr(
@@ -262,9 +240,6 @@ function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
     });
 
 }
-
-
-
 function readImage(input) {
     if (input.files && input.files[0]) {
         var FR = new FileReader();
@@ -275,4 +250,18 @@ function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
         };
         FR.readAsDataURL(input.files[0]);
     }
+}
+function getTipo(idform) {
+var ret;
+    switch (idform) {
+        case 'cargaexp':
+            ret =1;
+        break;
+        case 'altaUsr':
+            ret =2;
+        break;
+    }
+
+    return ret;
+
 }
