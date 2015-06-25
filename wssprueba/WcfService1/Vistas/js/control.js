@@ -1,8 +1,9 @@
 $(document).ready(function () {
+    
     $("#but").click(function () {
         login($("#name").val(), $("#pwd").val());
     });
-
+   
  
 });
 function insertedif(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country) {
@@ -55,10 +56,12 @@ function login(usr, pass) {
             data: JSON.stringify(log),
             async: false
         }).done(function (data) {
+            
             if (data.campo !== null) {
                 console.log(data);
                 append(data);
                 getMenuOpt();
+                loadEvents();
             }
             else {
                 alert(data.error);
@@ -92,6 +95,9 @@ function getMenuOpt() {
 
 function getform(idform) {
     var log = new Object();
+    log.IdRequestor = $("#mhdnId").val();
+    log.FormTipo = 1;
+    log.data = '';
 
     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/formres',
@@ -104,16 +110,15 @@ function getform(idform) {
         data: JSON.stringify(log),
         async: false
     }).done(function (data) {
-
-        formfunctions();
+        loadEvents();
+        //formfunctions();
         $("#forminy").empty();
         $("#forminy").append(data.campo);
         console.log(data);
-        alert("entre")
-        Resident();
-        loadEvents();
-
+       // alert("entre");
+        //  Resident();
     });
+   
 
 }
 
@@ -175,6 +180,7 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
 
 function loadEvents() {
 
+    alert("entreOADsadasd");
     $("#crearUsr").click(function () {
 
         insertUsr(
@@ -205,7 +211,18 @@ function loadEvents() {
 
     });
 
+    $("#File1").fileinput();
+    $("#File1").change(function () {
+        console.log("entreFILE");
+        readImage(this);
 
+    });
+    $("#Submit1").click(function () {
+     //   readImage($("#File1"));
+        console.log($('#hide').val());
+  
+
+    });
 }
 
 function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
@@ -244,4 +261,18 @@ function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
 
     });
 
+}
+
+
+
+function readImage(input) {
+    if (input.files && input.files[0]) {
+        var FR = new FileReader();
+        FR.onload = function (e) {
+            // $('#img').attr("src", e.target.result);
+            $('#hide').val(e.target.result);
+            console.log(e.target.result);
+        };
+        FR.readAsDataURL(input.files[0]);
+    }
 }

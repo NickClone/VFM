@@ -163,6 +163,7 @@
     <Compile Include="clases\entidades\Login.cs" />
     <Compile Include="clases\FormExpensa.cs" />
     <Compile Include="clases\FormFactory.cs" />
+    <Compile Include="clases\Formulario.cs" />
     <Compile Include="clases\IForm.cs" />
     <Compile Include="clases\Menu.cs" />
     <Compile Include="services\FileManagerService.svc.cs">
