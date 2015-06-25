@@ -2,8 +2,43 @@ $(document).ready(function () {
     $("#but").click(function () {
         login($("#name").val(), $("#pwd").val());
     });
-});
 
+   
+
+});
+function insertedif(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country) {
+    var edi = new Object();
+    console.log(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country);
+
+    edi.edif_nombre = nombre;
+    edi.edif_calle = calle;
+    edi.edif_num = num;
+    edi.edif_cp = cp;
+    edi.edif_cantpisos = cantpisos;
+    edi.edif_deptosxpiso = deptosxpiso;
+    edi.edif_tienepb = tienepb;
+    edi.edif_deptoletra = deptoletra;
+    edi.edif_loc = loc;
+    edi.edif_prov = prov;
+    edi.edif_country = country;
+
+    $.ajax({
+        url: 'http://localhost:1066/services/service1.svc/AltaEdificio',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: 'POST',
+        dataType: 'JSON',
+        data: JSON.stringify(edi),
+        async: false
+    }).done(function (data) {
+
+        alert("ID de nuevo Edificio es: " +
+           "\n" + data);
+    });
+
+}
 
 function login(usr, pass) {
     if (usr != '' && pass != '') {
@@ -21,7 +56,6 @@ function login(usr, pass) {
             data: JSON.stringify(log),
             async: false
         }).done(function (data) {
-
             console.log(data);
             append(data);
             getMenuOpt();
@@ -54,6 +88,7 @@ function getMenuOpt() {
 
 function getform(idform) {
     var log = new Object();
+
     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/formres',
         headers: {
@@ -67,9 +102,10 @@ function getform(idform) {
     }).done(function (data) {
         $("#forminy").empty();
         $("#forminy").append(data.campo);
-        console.log(data);
-        alert("entre")
-        Resident();
+            console.log(data);
+            alert("entre")
+            Resident();
+            loadEvents();
 
     });
 
@@ -93,8 +129,7 @@ function Resident(e) {
     });
 
 }
-
-function insert(nombre, apellido, account, password, tel, Fnac, Sexo) {
+function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
     var usr = new Object();
     //usr.id = id;
 
@@ -128,6 +163,39 @@ function insert(nombre, apellido, account, password, tel, Fnac, Sexo) {
         alert("ID de nuevo usuario es: ");
         alert(data);
 
+    });
+
+}
+
+function loadEvents() {
+
+    $("#crearUsr").click(function () {
+
+        insertUsr(
+        $("#box_nombre").val(),
+        $("#box_apellido").val(),
+        $("#box_account").val(),
+        $("#box_password").val(),
+        $("#box_telefono").val(),
+        $("#box_FecNac").val(),
+        $("#box_sexo").val()
+        );
+
+    });
+    $("#edif_btn").click(function () {
+        insertedif(
+        $("#edif_nombre").val(),
+        $("#edif_calle").val(),
+        $("#edif_num").val(),
+        $("#edif_cp").val(),
+        $("#edif_cantpisos").val(),
+        $("#edif_deptosxpiso").val(),
+        $("edif_TienePB").val(),
+        $("edif_DeptoLetra").val(),
+        $("#edif_loc").val(),
+        $("#edif_prov").val(),
+        $("#edif_country").val()
+        );
 
     });
 
