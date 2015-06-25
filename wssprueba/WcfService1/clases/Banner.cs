@@ -16,7 +16,7 @@ namespace WcfService1.clases
                 this.banner = "<input id='mhdnId' type='hidden' value=" + user.Id + " />";
                 this.banner = this.banner + "<input id='mhdnAccount' type='hidden' value=" + user.Account + " />";
                 this.banner = this.banner + "<input id='mhdnApellido' type='hidden' value=" + user.Apellido + " />";
-                this.banner = this.banner + "<div class='row'><div class='container' id='title'><div class='col-md-12 col-md-offset-4'><h1>Virtual Facility Manager</h2></div><div class='col-md-3'><h5 id='adm'>" + user.Account + "</h5></div></div></div>";
+                this.banner = this.banner + "<div class='row'><div class='container' id='title'><div class='col-md-12 col-md-offset-4'><h1 id ='BanTit'>Virtual Facility Manager</h1></div><div class='col-md-3'><h5 id='adm'> USUARIO: " + user.Account + "   APELLIDO: " + user.Apellido + "</h5></div></div></div>";
             }
 
             if (user is Administrator)
@@ -24,7 +24,7 @@ namespace WcfService1.clases
                 this.banner = "<input id='mhdnId' type='hidden' value=" + user.Id + " />";
                 this.banner = this.banner + "<input id='mhdnAccount' type='hidden' value=" + user.Account + " />";
                 this.banner = this.banner + "<input id='mhdnApellido' type='hidden' value=" + user.Apellido + " />";
-                this.banner = this.banner + "<div class='row'><div class='container' id='title'><div class='col-md-12 col-md-offset-4'><h1>Super Admin</h2></div><div class='col-md-3'><h5 id='adm'>" + user.Account + "</h5></div></div></div>";
+                this.banner = this.banner + "<div class='row'><div class='container' id='title'><div class='col-md-12 col-md-offset-4'><h1 id ='BanTit'><strong>VFM</strong>Admin</h1></div><div class='col-md-3'><h5 id='adm'> <strong>USUARIO:</strong> " + user.Account + "   <strong>APELLIDO:</strong>  " + user.Apellido + "</h5></div></div></div>";
              }
   
         }

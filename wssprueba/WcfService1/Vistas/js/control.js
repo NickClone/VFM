@@ -259,7 +259,11 @@ var ret;
         break;
         case 'altaUsr':
             ret =2;
-        break;
+            break;
+        case 'edificio':
+            ret = 3;
+            break;
+     
     }
 
     return ret;

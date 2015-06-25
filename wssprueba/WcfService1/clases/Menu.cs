@@ -22,6 +22,7 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "     </div>";
             this.menubar = this.menubar + "  <div class='collapse navbar-collapse navbar-ex1-collapse'>";
             this.menubar = this.menubar + "    <ul class='nav navbar-nav'>";
+            this.menubar = this.menubar + "    <li ><a href='#' id ='edificio'>Datos Edificio</a></li>";
             this.menubar = this.menubar + "    <li><a href='#' id='drop' data-toggle='collapse' data-target='#submenu1' aria-expanded='false'>Expensas</a>";
             this.menubar = this.menubar + "      <ul class='active nav collapse' id='submenu1' role='menu' aria-labelledby='btn-1'>";
             this.menubar = this.menubar + "        <li><a href='#' id='cargaexp' >Carga de expensas</a></li>";
@@ -37,8 +38,8 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "        <li><a href='#'>Cochera</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "    </li>";
-            this.menubar = this.menubar + "      <li ><a href='#' id ='altaUsr'>Alta Usuario</a></li>";
-            this.menubar = this.menubar + "      <li ><a href='#' id ='bajaUsr'>Baja Usuario</a></li>";
+            this.menubar = this.menubar + "    <li ><a href='#' id ='altaUsr'>Alta Usuario</a></li>";
+            this.menubar = this.menubar + "    <li ><a href='#' id ='bajaUsr'>Baja Usuario</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "  </div>";
             this.menubar = this.menubar + "</nav>";

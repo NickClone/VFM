@@ -20,7 +20,9 @@ namespace WcfService1.clases
                 case "2":
                     Formulario = new FormAltaResidente();
                     break;
-                
+                case "3":
+                    Formulario = new FormAltaEdificio();
+                    break;
             }
 
             return Formulario;

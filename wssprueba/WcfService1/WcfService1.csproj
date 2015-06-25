@@ -111,23 +111,17 @@
     <Content Include="Vistas\JsPdf\libs\FileSaver.js\FileSaver.js" />
     <Content Include="Vistas\JsPdf\libs\FileSaver.js\FileSaver.min.js" />
     <Content Include="Vistas\js\jquery.js" />
-    <Content Include="Vistas\js\SubirExpensa.js" />
-    <Content Include="Vistas\SubirExpensa.html" />
     <Content Include="Vistas\dist\css\bootstrap-theme.css" />
     <Content Include="Vistas\dist\css\bootstrap-theme.min.css" />
     <Content Include="Vistas\dist\css\bootstrap.css" />
     <Content Include="Vistas\dist\css\bootstrap.min.css" />
     <Content Include="Vistas\dist\js\bootstrap.js" />
     <Content Include="Vistas\dist\js\bootstrap.min.js" />
-    <Content Include="Vistas\css\Images\woods-wallpaper.jpg" />
-    <Content Include="Vistas\js\AltaEdificio.js" />
     <Content Include="Vistas\js\control.js" />
     <Content Include="services\pages.svc" />
-    <Content Include="main.html" />
     <Content Include="services\Service1.svc" />
     <Content Include="Vistas\css\style.css" />
     <Content Include="Vistas\Index.html" />
-    <Content Include="Vistas\js\AltaUsuario.js" />
     <Content Include="Vistas\css\navstyle.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -143,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clases\entidades\RequestForm.cs" />
+    <Compile Include="clases\FormAltaEdificio.cs" />
     <Compile Include="clases\FormAltaResidente.cs" />
     <Compile Include="clases\Banner.cs" />
     <Compile Include="clases\Conn.cs" />
@@ -184,6 +179,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Upload\" />
+    <Folder Include="Vistas\css\Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Vistas\bootstrap-fileinput-master\.gitignore" />

@@ -15,7 +15,7 @@ namespace WcfService1.clases
             this.form = this.form + "<fieldset>";
             this.form = this.form + "<legend>Alta Residente</legend>";
             this.form = this.form + "<div class='form-group'>";
-            this.form = this.form + "  <label class='col-md-4 control-label' for='nomUsr'>Nomre</label>  ";
+            this.form = this.form + "  <label class='col-md-4 control-label' for='nomUsr'>Nombre</label>  ";
             this.form = this.form + "  <div class='col-md-4'>";
             this.form = this.form + "  <input id='nomUsr' name='nomUsr' placeholder='' class='form-control input-md' required='' type='text'>";
             this.form = this.form + "  </div>";
