@@ -68,75 +68,96 @@ namespace WcfService1.clases
             {
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
-                    query = "select * from sys_usuarios where usu_acc = '" + usr.Account + "' and usu_pass = '" + usr.Password + "'";
+                    // BUSCA USUARIO
+                    query = "SELECT cod_usu FROM sys_usuarios WHERE usu_acc = '" + usr.Account + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     SqlDataReader reader2 = cmd.ExecuteReader();
 
+                    // SI USUARIO EXISTE
                     if (reader2.HasRows)
                     {
                         reader2.Read();
-                        //                        usr = new User();
-                        usr.Id = reader2.GetInt32(0);
-                        usr.Account = reader2.GetString(1);
-                        usr.Nombre = reader2.GetString(3);
-                        usr.Apellido = reader2.GetString(4);
-                        usr.Tel = reader2.GetString(6);
-                        usr.Perfil = reader2.GetString(11).Trim();
+                        // BUSCO PASSWORD
+                        query = "SELECT * FROM sys_usuarios WHERE cod_usu = " + (reader2.GetInt32(0)) + " AND usu_pass = '" + usr.Password + "'";
+                        cmd.CommandText = query;
                         reader2.Close();
+                        reader2 = cmd.ExecuteReader();
 
-                        if (usr.Perfil == "1")
+                        // SI PASSWORD COINCIDE
+                        if (reader2.HasRows)
                         {
-                            Habitante habit = new Habitante(usr);
+                            reader2.Read();
 
+                            usr.Id = reader2.GetInt32(0);
+                            usr.Account = reader2.GetString(1);
+                            usr.Nombre = reader2.GetString(3);
+                            usr.Apellido = reader2.GetString(4);
+                            usr.Tel = reader2.GetString(6);
+                            usr.Perfil = reader2.GetString(11).Trim();
 
-                            query = "select * from vfm_habit where cod_usu = '" + usr.Id + "'";
-
-                            cmd.CommandText = query;
-                            reader2 = cmd.ExecuteReader();
-                            if (reader2.HasRows)
-                            {
-                                reader2.Read();
-                                habit.Id_edif = reader2.GetInt32(0);
-                                habit.Piso = reader2.GetString(3);
-                                habit.Dpto = reader2.GetString(4);
-                            }
-                            conexion.Close();
                             reader2.Close();
 
-                            return (User)habit;
-                        }
-                        if (usr.Perfil == "2")
-                        {
-
-                            Administrator Admin = new Administrator(usr);
-
-                            query = "select * from administracion where id = '" + usr.Id + "'";
-
-                            cmd.CommandText = query;
-                            reader2 = cmd.ExecuteReader();
-                            if (reader2.HasRows)
+                            if (usr.Perfil == "1")
                             {
-                                reader2.Read();
-                                Admin.Nom_Company = reader2.GetString(1);
-                                Admin.horario_consul = reader2.GetString(2);
+                                Habitante habit = new Habitante(usr);
+
+
+                                query = "select * from vfm_habit where cod_usu = '" + usr.Id + "'";
+
+                                cmd.CommandText = query;
+                                reader2 = cmd.ExecuteReader();
+                                if (reader2.HasRows)
+                                {
+                                    reader2.Read();
+                                    habit.Id_edif = reader2.GetInt32(0);
+                                    habit.Piso = reader2.GetString(3);
+                                    habit.Dpto = reader2.GetString(4);
+                                }
+                                conexion.Close();
+                                reader2.Close();
+
+                                return (User)habit;
                             }
-                            conexion.Close();
-                            reader2.Close();
+                            if (usr.Perfil == "2")
+                            {
 
-                            return (User)Admin;
+                                Administrator Admin = new Administrator(usr);
+
+                                query = "select * from administracion where id = '" + usr.Id + "'";
+
+                                cmd.CommandText = query;
+                                reader2 = cmd.ExecuteReader();
+                                if (reader2.HasRows)
+                                {
+                                    reader2.Read();
+                                    Admin.Nom_Company = reader2.GetString(1);
+                                    Admin.horario_consul = reader2.GetString(2);
+                                }
+                                conexion.Close();
+                                reader2.Close();
+
+                                return (User)Admin;
+                            }
                         }
-
+                        // SI PASSWORD NO COINCIDE
+                        else
+                        {
+                            // EL STRING ESTA SOLO A MODO ILUSTRATIVO
+                            string passError = "El password esta incorrecto";
+                            usr = null;
+                        }
 
                     }
+                    // SI USUARIO NO EXISTE
                     else
                     {
+                        // EL STRING ESTA SOLO A MODO ILUSTRATIVO
+                        string UserError = "el usuario no existe";
                         usr = null;
                     }
 
                     return usr;
-
-
 
                 }
             }
