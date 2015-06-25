@@ -129,7 +129,10 @@ namespace WcfService1.clases
 
 
                     }
-
+                    else
+                    {
+                        usr = null;
+                    }
 
                     return usr;
 

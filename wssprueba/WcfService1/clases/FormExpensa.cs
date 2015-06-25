@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WcfService1.clases
 {
-    public class FormExpensa
+    public class FormExpensa : IForm
     {
 
         public string form { get; set; }
@@ -55,7 +55,12 @@ namespace WcfService1.clases
 
 
         }
+        public string ReturnForm()
+        {
 
+            return this.form;
+
+        }
        
     }
 }

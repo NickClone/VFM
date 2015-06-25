@@ -35,7 +35,7 @@ namespace WcfService1
 
         [OperationContract(Name = "res")]
         [WebInvoke(UriTemplate = "/FormRes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
-        Stream GetFormRes();
+        Stream GetFormRes(RequestForm ReqForm);
 
         [OperationContract(Name = "exp")]
         [WebInvoke(UriTemplate = "/exp", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
