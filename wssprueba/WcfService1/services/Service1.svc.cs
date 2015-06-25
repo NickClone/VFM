@@ -33,18 +33,17 @@ namespace WcfService1
             ControllerUsuario cont = new ControllerUsuario(log);
             string ret = null;
             User Usuario = cont.UsuChk();
-
+         
             if (Usuario != null)
             {
                 Banner ban = new Banner(Usuario);
                 Menu men = new Menu(Usuario);
                 ret = ban.banner + men.menubar + "<div id='forminy'></div>";
+                  
             }
-            object lal = new
-            {
-                campo = ret
-            };
-
+                
+                object lal = new { campo = ret, error = "No existe" };
+            
             var s = new JavaScriptSerializer();
             string jsonClient = s.Serialize(lal);
             WebOperationContext.Current.OutgoingResponse.ContentType =

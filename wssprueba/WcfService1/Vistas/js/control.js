@@ -3,8 +3,7 @@ $(document).ready(function () {
         login($("#name").val(), $("#pwd").val());
     });
 
-   
-
+ 
 });
 function insertedif(nombre, calle, num, cp, cantpisos, deptosxpiso, tienepb, deptoletra, loc, prov, country) {
     var edi = new Object();
@@ -56,9 +55,14 @@ function login(usr, pass) {
             data: JSON.stringify(log),
             async: false
         }).done(function (data) {
-            console.log(data);
-            append(data);
-            getMenuOpt();
+            if (data.campo !== null) {
+                console.log(data);
+                append(data);
+                getMenuOpt();
+            }
+            else {
+                alert(data.error);
+            }
         });
 
     }
@@ -100,12 +104,14 @@ function getform(idform) {
         data: JSON.stringify(log),
         async: false
     }).done(function (data) {
+
+        formfunctions();
         $("#forminy").empty();
         $("#forminy").append(data.campo);
-            console.log(data);
-            alert("entre")
-            Resident();
-            loadEvents();
+        console.log(data);
+        alert("entre")
+        Resident();
+        loadEvents();
 
     });
 
@@ -199,5 +205,43 @@ function loadEvents() {
 
     });
 
+
+}
+
+function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
+    var usr = new Object();
+    //usr.id = id;
+
+    usr.Nombre = nombre;
+    usr.Apellido = apellido;
+    usr.Account = account;
+    usr.Password = password;
+    usr.Tel = tel;
+    usr.Sexo = Sexo;
+    usr.Id_edif = 1;
+    usr.rol = 2;
+    usr.Piso = "2";
+    usr.Dpto = "B";
+
+    usr.FechaNacimiento = Fnac;
+    //usr.FechaRegistracion = Freg;
+    //usr.FechaActualizacion = Fact;
+    //usr.Estado = estado;
+    $.ajax({
+        url: 'http://localhost:1066/services/service1.svc/insHab',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: 'POST',
+        dataType: 'JSON',
+        data: JSON.stringify(usr),
+        async: false
+    }).done(function (data) {
+
+        alert("ID de nuevo usuario es: ");
+        alert(data);
+
+    });
 
 }
