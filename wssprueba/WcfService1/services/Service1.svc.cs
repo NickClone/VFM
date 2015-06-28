@@ -58,7 +58,7 @@ namespace WcfService1
             //ControllerUsuario cont = new ControllerUsuario(log);
             FormFactory FormFact = new FormFactory();
             form = FormFact.CreateForm(ReqForm.FormTipo);
-           // Forma inline de devolver todo  ((new FormFactory()).CreateForm(ReqForm.FormTipo)).ReturnForm();
+       //   ((new FormFactory()).CreateForm(ReqForm.FormTipo)).ReturnForm();
             //OJO!! Si el tipo que le mando no esta creado rompe al acceder a form.ReturnForm(); porque esta null
             object lal = new
             {

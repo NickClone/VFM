@@ -30,9 +30,8 @@ namespace WcfService1.clases
             this.form = this.form + "<!-- Form Name -->";
 
             this.form = this.form + "<legend>Alta Edificio</legend>";
-
-
-
+            this.form = this.form + "<button type='button' class='btn btn-default' id ='edimod' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='btn btn-default' id ='edibaja' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-minus'></span></button><button type='button' class='btn btn-default' id ='edialta' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-plus'></span></button>";
+            
             this.form = this.form + "<!-- Text input-->";
 
             this.form = this.form + "<div class='form-group'>";

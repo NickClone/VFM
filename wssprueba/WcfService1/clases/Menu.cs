@@ -38,9 +38,8 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "        <li><a href='#'>Cochera</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "    </li>";
-            this.menubar = this.menubar + "    <li ><a href='#' id ='altaUsr'>Alta Usuario</a></li>";
-            this.menubar = this.menubar + "    <li ><a href='#' id ='bajaUsr'>Baja Usuario</a></li>";
-            this.menubar = this.menubar + "      </ul>";
+            this.menubar = this.menubar + "    <li ><a href='#' id ='altaUsr'>Gestion Usuario</a></li>";
+            this.menubar = this.menubar + "   </ul>";
             this.menubar = this.menubar + "  </div>";
             this.menubar = this.menubar + "</nav>";
             this.menubar = this.menubar + "</div>";
@@ -80,8 +79,7 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "        <li><a href='#'>Cochera</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "    </li>";
-            this.menubar = this.menubar + "      <li ><a href=''>Alta Usuario</a></li>";
-            this.menubar = this.menubar + "      <li ><a href=''>Baja Usuario</a></li>";
+            this.menubar = this.menubar + "      <li ><a href=''>Gestion Usuario</a></li>";
             this.menubar = this.menubar + "      </ul>";
             this.menubar = this.menubar + "  </div>";
             this.menubar = this.menubar + "</nav>";

@@ -1,4 +1,8 @@
 $(document).ready(function () {
+//    $('#modal').modal({
+//        keyboard: false,
+//        show: true
+//    });
    var optmenu;
     $("#but").click(function () {
         login($("#name").val(), $("#pwd").val());
@@ -61,7 +65,8 @@ function login(usr, pass) {
                 console.log(data);
                 append(data);
                 getMenuOpt();
-                loadEvents();
+              //  loadEvents();
+          
             }
             else {
                 alert(data.error);
@@ -79,6 +84,7 @@ function append(data) {
         $('body').css('background-image', 'none');
         $("body").empty();
         $("body").append(data.campo);
+     //   $("body").append("<div id='modal' class='modal fade' tabindex='-1' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>X</button><h3 id='myModalLabel'>Busqueda Reparacion</h3></div><div class='modal-body' id ='bod'><div id='detsearch'></div></div></div></div></div>");
     }
 
 }
@@ -97,25 +103,33 @@ function getform(idform) {
     var log = new Object();
     log.IdRequestor = $("#mhdnId").val();
     log.FormTipo = getTipo(idform);
-    log.data = '';
+    if (log.FormTipo > 0) {
+        log.data = '';
 
-    $.ajax({
-        url: 'http://localhost:1066/services/service1.svc/formres',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        type: 'POST',
-        dataType: 'JSON',
-        data: JSON.stringify(log),
-        async: false
-    }).done(function (data) {
-        
+        $.ajax({
+            url: 'http://localhost:1066/services/service1.svc/formres',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: 'POST',
+            dataType: 'JSON',
+            data: JSON.stringify(log),
+            async: false
+        }).done(function (data) {
+
+            $("#forminy").empty();
+            $("#forminy").append(data.campo);
+            loadEvents();
+            btnlistener();
+            console.log(data);
+        });
+    }
+    else {
         $("#forminy").empty();
-        $("#forminy").append(data.campo);
-        loadEvents();
-        console.log(data);
-    });
+        $('#forminy').prepend('<img id="theImg" src="http://www.bpj-bd.com/images/Website-Under-Construction-template1.jpg"  height="100%" width="70%"/>')
+        
+    }
 }
 
 function Resident(e) {
@@ -124,8 +138,9 @@ function Resident(e) {
     });
 
 }
-function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
+function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id) {
     var usr = new Object();
+    usr.id = id;
     usr.Nombre = nombre;
     usr.Apellido = apellido;
     usr.Account = account;
@@ -160,7 +175,6 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo) {
 }
 function loadEvents() {
     $("#crearUsr").click(function () {
-
         insertUsr(
         $("#box_nombre").val(),
         $("#box_apellido").val(),
@@ -168,9 +182,9 @@ function loadEvents() {
         $("#box_password").val(),
         $("#box_telefono").val(),
         $("#box_FecNac").val(),
-        $("#box_sexo").val()
+        $("#box_sexo").val(),
+        $("#idUsr").val()
         );
-
     });
     $("#edif_btn").click(function () {
         insertedif(
@@ -203,11 +217,10 @@ function loadEvents() {
     });
 }
 
-function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
+function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo,id) {
     var usr = new Object();
-    //usr.id = id;
-
-    usr.Nombre = nombre;
+    usr.id = id;
+        usr.Nombre = nombre;
     usr.Apellido = apellido;
     usr.Account = account;
     usr.Password = password;
@@ -250,6 +263,7 @@ function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo) {
         };
         FR.readAsDataURL(input.files[0]);
     }
+
 }
 function getTipo(idform) {
 var ret;
@@ -263,9 +277,62 @@ var ret;
         case 'edificio':
             ret = 3;
             break;
+        default:
+            ret = -1;
      
     }
 
     return ret;
+
+}
+
+function btnlistener() {
+/*
+    $("#usralta").click(function () {
+        BootstrapDialog.show('I want banana!');
+
+    });
+    */
+    $('#usralta').click(function () {
+        
+      
+    })
+    $("#usrbaja").click(function () {
+        setModalBaja();
+
+        //$("#modaltitle").empty();
+
+    });
+    $("#usrmod").click(function () {
+        setModalMod();
+
+    });
+}
+
+
+
+function setModalBaja() {
+    $("#modalTitle").text("Baja Residente");
+    $("#bod").empty();
+    $('.modal-dialog').css('width', 500);
+    $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
+    $('#modal').modal({
+        keyboard: false,
+        show: true
+    });
+    
+
+}
+
+function setModalMod() {
+    $("#modalTitle").text("Modificacion Residente");
+    $('.modal-dialog').css('width', 700);
+    $("#bod").empty();
+    $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
+    $('#modal').modal({
+        keyboard: false,
+        show: true
+    });
+    
 
 }

@@ -18,8 +18,10 @@ namespace WcfService1.clases
            this.form = this.form + "";
            this.form = this.form + "<!-- Form Name -->";
            this.form = this.form + "    <legend>Carga de Expensas</legend>";
-           this.form = this.form +"";
-           this.form = this.form +"";
+           this.form = this.form + "<button type='button' class='btn btn-default' id ='ediexp' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='btn btn-default' id ='expbaja' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-minus'></span></button><button type='button' class='btn btn-default' id ='expalta' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-plus'></span></button><br>";
+            
+       //    this.form = this.form +"";
+       //    this.form = this.form +"";
            this.form = this.form +"    <form >";
            this.form = this.form +"         <!--<input id='File1' class='file' type='file' multiple data-min-file-count='1'>-->";
            this.form = this.form +"         <input id='File1' class='file' type='file'>";
