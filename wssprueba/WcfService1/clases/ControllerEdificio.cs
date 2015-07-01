@@ -19,9 +19,63 @@ namespace WcfService1.clases
             this.edif = ed;
             query = "";
         }
+        public ControllerEdificio(int cod_ed)
+        {
+            edif = new Edificio();
+            edif.cod_edif = cod_ed;
+            query = "";
+        }
         public void getEdifbyId(int id) { 
         
         
+        }
+
+        public List <Habitante> getListHabit()
+        {
+            try
+            {
+                using (SqlConnection conexion = ConexionDA.ObtenerConexion())
+                {
+
+                    query = "[vfm_ListHabitxEdif]" + edif.cod_edif;
+                    List <Habitante> HabitList = new List <Habitante> ();
+                    Habitante habit = new Habitante();
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    this.reader = cmd.ExecuteReader();
+
+                    
+
+                    while (reader.Read())
+                    {
+                        
+                        
+                        habit.Id = reader.GetInt32(0);
+                        habit.Nombre = reader.GetString(1);
+                        habit.Apellido = reader.GetString(2);
+                        habit.Password = reader.GetString(3);
+                        habit.Tel = reader.GetString(4);
+                        habit.FechaNacimiento = reader.GetString(5);
+                        habit.Sexo = reader.GetString(6).First();
+                        habit.rol = reader.GetInt32(7);
+                        habit.Dpto = reader.GetInt32(8).ToString();
+                        habit.Piso = reader.GetString(9).ToString();
+
+                        HabitList.Add(habit);
+
+                       
+                    }
+                    reader.Close();
+                    conexion.Close();
+
+                    return HabitList;
+
+                }
+            }
+            catch (Exception ex) {
+
+                return null;
+            }
+
         }
 
         public int Alta()

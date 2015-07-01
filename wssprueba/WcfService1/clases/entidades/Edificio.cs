@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WcfService1.clases.excepcions;
+using WcfService1.clases;
 
 public class Edificio
 {
@@ -42,8 +43,18 @@ public class Edificio
         Ldpto = _Ldpto;
         Lexp = _Lexp;
     }
+    public Edificio(int _cod_edif)
+    {
+        cod_edif = _cod_edif;   
+    }
+    public List<Habitante> FillHabitList(){
 
+        ContEdif = new ControllerEdificio(cod_edif);
 
+        return ContEdif.getListHabit();    
+    }
+
+    public ControllerEdificio ContEdif { get; set; }
     public int cod_edif { get; set; }
     public string edif_nombre { get; set; }
     public string edif_calle { get; set; }
@@ -58,6 +69,7 @@ public class Edificio
     public string edif_loc { get; set; }
     public decimal estado { get; set; }
     public List<Dpto> Ldpto { get; set; }
+    public List<Habitante> Lhabit { get; set; }
     public List<Expensa> Lexp { get; set; }
 
 

@@ -110,6 +110,7 @@
     <Content Include="Vistas\JsPdf\libs\FileSaver.js\demo\demo.min.js" />
     <Content Include="Vistas\JsPdf\libs\FileSaver.js\FileSaver.js" />
     <Content Include="Vistas\JsPdf\libs\FileSaver.js\FileSaver.min.js" />
+    <Content Include="Vistas\js\AltaUsuario.js" />
     <Content Include="Vistas\js\jquery.js" />
     <Content Include="Vistas\dist\css\bootstrap-theme.css" />
     <Content Include="Vistas\dist\css\bootstrap-theme.min.css" />
