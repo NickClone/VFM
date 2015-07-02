@@ -253,7 +253,8 @@ function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo,id) {
     });
 
 }
-function readImage(input) {
+
+function readImage(input) {
     if (input.files && input.files[0]) {
         var FR = new FileReader();
         FR.onload = function (e) {
@@ -286,16 +287,17 @@ var ret;
 
 }
 
+
 function btnlistener() {
-/*
+    /*
     $("#usralta").click(function () {
-        BootstrapDialog.show('I want banana!');
+    BootstrapDialog.show('I want banana!');
 
     });
     */
     $('#usralta').click(function () {
-        
-      
+
+
     })
     $("#usrbaja").click(function () {
         setModalBaja();
@@ -310,17 +312,24 @@ function btnlistener() {
 }
 
 
-
-function setModalBaja() {
-    $("#modalTitle").text("Baja Residente");
+ function setModalBaja() {
+    $("#modalTitle").text("Modificacion Usuarios");
     $("#bod").empty();
-    $('.modal-dialog').css('width', 500);
-    $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
+    var obj = new Object();
+    obj = getListHabit();
+   // $('.modal-dialog').css('width', 500);
+   // $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
+   $("#bod").append( ' <table class="table table-striped" id= "tabla"> <thead> <tr> <th>Nombre</th> <th>Apellido</th> <th>DNI</th><th>Depto</th> </tr> </thead> <tbody> <tr>  <td>John</td> <td>Carter</td> <td>johncarter@mail.com</td> <td>11B<td></tr> <tr>  <td>Peter</td> <td>Parker</td> <td>peterparker@mail.com</td> <td>4A<td> </tr> <tr>  <td>John</td> <td>Rambo</td> <td>johnrambo@mail.com</td> <td>5C<td></tr> </tbody> </table> ');
     $('#modal').modal({
         keyboard: false,
         show: true
     });
-    
+    $('#tabla  tr ').click(function() {
+       // alert($(this).find(".Email").html());   
+        alert($(this).text());
+        
+    });
+
 
 }
 
@@ -333,6 +342,31 @@ function setModalMod() {
         keyboard: false,
         show: true
     });
-    
+
+
+}
+
+
+function getListHabit() {
+
+      var edi = new Object();
+    edi.cod_edif = 1;
+    $.ajax({
+        url: 'http://localhost:1066/services/service1.svc/GetHabitList',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: 'POST',
+        dataType: 'JSON',
+        data: JSON.stringify(edi),
+        async: false
+    }).done(function (data) {
+        $.each(data, function(key,value){
+            console.log('key:' + key + '  value: ' + value);
+        });
+        //console.log(data);
+        return data;
+    });
 
 }

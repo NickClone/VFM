@@ -14,7 +14,6 @@ namespace WcfService1.clases
             rol = 0;
             Piso = "";
             Dpto = "";
-            FechaRegHabit = DateTime.MinValue;
         }
         public Habitante(User usr): base(usr)
         {
@@ -22,7 +21,6 @@ namespace WcfService1.clases
             rol = 0;
             Piso = "";
             Dpto = "";
-            FechaRegHabit = DateTime.MinValue;
         }
 
  
@@ -30,7 +28,7 @@ namespace WcfService1.clases
         public int rol { get; set; }
         public string Piso { get; set; }
         public string Dpto { get; set; }
-        public DateTime FechaRegHabit { get; set; }
+       
 
 
  /*       public void ValidarDatos()

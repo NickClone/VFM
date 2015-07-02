@@ -15,8 +15,9 @@ namespace WcfService1.clases
 
         public static SqlConnection ObtenerConexion()
         {
-            SqlConnection conexion = new SqlConnection("Data Source=(local);Initial Catalog=Administracion_sys;Integrated Security=True");
-            conexion.Open();
+           // SqlConnection conexion = new SqlConnection("Data Source=(local);Initial Catalog=Administracion_sys;Integrated Security=True");
+            SqlConnection conexion = new SqlConnection("Data Source=VCORE1\\SQLEXPRESS;Initial Catalog=VFM;Integrated Security=True");
+              conexion.Open();
 
             return conexion;
         }
