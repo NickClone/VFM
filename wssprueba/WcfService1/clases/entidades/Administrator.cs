@@ -10,12 +10,15 @@ namespace WcfService1
     {
         public string Nom_Company { get; set; }
         public string horario_consul { get; set; }
+        public  List<Edificio> LEdif { get; set; }
+ 
 
 
         public Administrator(User usr): base(usr)
         {
             Nom_Company = "";
             horario_consul = "";
+            LEdif = new List<Edificio>();
         }
     }
 }

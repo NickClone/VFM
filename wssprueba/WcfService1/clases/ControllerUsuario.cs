@@ -124,16 +124,28 @@ namespace WcfService1.clases
 
                                 Administrator Admin = new Administrator(usr);
 
-                                query = "select * from administracion where id = '" + usr.Id + "'";
+
+                                query = "select nom_admin,horario,cod_edif,edif_calle,Edif_num from vfm_EdifxAdmin A ";
+                                query = query + " inner join vfm_edif E on A.edif_id = E.cod_edif " ;
+                                query = query + " where usu_id = " + usr.Id;
 
                                 cmd.CommandText = query;
                                 reader2 = cmd.ExecuteReader();
-                                if (reader2.HasRows)
-                                {
-                                    reader2.Read();
-                                    Admin.Nom_Company = reader2.GetString(1);
-                                    Admin.horario_consul = reader2.GetString(2);
+                              
+                                
+                                //if (reader2.HasRows)
+                                //{
+                                //    reader2.Read();
+                                //    Admin.Nom_Company = reader2.GetString(1);
+                                //    Admin.horario_consul = reader2.GetString(2);
+                                //}
+                                while(reader2.Read()){
+                                
+                                    Admin.LEdif.Add(new Edificio(reader2.GetInt32(2),reader2.GetString(3),reader2.GetDecimal(4)));
+                                
                                 }
+
+
                                 conexion.Close();
                                 reader2.Close();
 

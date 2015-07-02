@@ -25,6 +25,24 @@ public class Edificio
         Ldpto = new List<Dpto>();
         Lexp = new List<Expensa>();
     }
+    public Edificio(int _cod_edif,string _Edif_calle,decimal _edif_num)
+    {
+        cod_edif = _cod_edif;
+        edif_nombre = "";
+        edif_calle = _Edif_calle;
+        edif_num = _edif_num;
+        edif_cp = "";
+        edif_cantpisos = 0;
+        edif_deptosxpiso = 0;
+        edif_tienepb = false;
+        edif_deptoletra = 'l';
+        edif_country = "";
+        edif_prov = "";
+        edif_loc = "";
+        estado = 0;
+        Ldpto = null;
+        Lexp = null;
+    }
     public Edificio(int _cod_edif, string _edif_nombre, string _edif_calle, decimal _edif_num, string _edif_cp, int _edif_cantpisos, int _edif_deptosxpiso, bool _edif_tienepb, char _edif_deptoletra, string _edif_country, string _edif_prov, string _edif_loc, decimal _estado, List<Dpto> _Ldpto, List<Expensa> _Lexp)
     {
         cod_edif = _cod_edif;
