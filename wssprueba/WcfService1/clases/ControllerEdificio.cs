@@ -39,7 +39,7 @@ namespace WcfService1.clases
 
                     query = "[vfm_ListHabitxEdif]" + edif.cod_edif;
                     List <Habitante> HabitList = new List <Habitante> ();
-                    Habitante habit = new Habitante();
+                    
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     this.reader = cmd.ExecuteReader();
 
@@ -48,7 +48,8 @@ namespace WcfService1.clases
                     while (reader.Read())
                     {
                         
-                        
+                        Habitante habit = new Habitante();
+
                         habit.Id = reader.GetInt32(0);
                         habit.Nombre = reader.GetString(1);
                         habit.Apellido = reader.GetString(2);
