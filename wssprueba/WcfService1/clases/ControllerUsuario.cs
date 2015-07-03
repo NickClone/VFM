@@ -69,7 +69,7 @@ namespace WcfService1.clases
                 using (SqlConnection conexion = ConexionDA.ObtenerConexion())
                 {
                     // BUSCA USUARIO
-                    query = "SELECT cod_usu FROM sys_usuarios WHERE usu_acc = '" + usr.Account + "'";
+                    query = "SELECT cod_usu FROM sys_usuarios WHERE usu_acc = '" + usr.Account + "' and estado <> -1";
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     SqlDataReader reader2 = cmd.ExecuteReader();

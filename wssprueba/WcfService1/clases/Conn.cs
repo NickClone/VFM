@@ -15,11 +15,65 @@ namespace WcfService1.clases
 
         public static SqlConnection ObtenerConexion()
         {
-           // SqlConnection conexion = new SqlConnection("Data Source=(local);Initial Catalog=Administracion_sys;Integrated Security=True");
-            SqlConnection conexion = new SqlConnection("Data Source=VCORE1\\SQLEXPRESS;Initial Catalog=VFM;Integrated Security=True");
-              conexion.Open();
+            int num = 0;
+            if (System.Environment.MachineName.ToLower() == "agu-ntbk")
+            {
+                num = 1;
+            }
+            if (System.Environment.MachineName.ToLower() == "napo-nb")
+            {
+                num = 2;
+            }
+            if (System.Environment.MachineName.ToLower() == "vcore1")
+            {
+                num = 3;
+            }
+            if (System.Environment.MachineName.ToLower() == "web")
+            {
+                num = 4;
+            }
 
-            return conexion;
+            SqlConnection conexion = new SqlConnection("Data Source=(local);Initial Catalog=VFM;Integrated Security=True");
+            switch (num)
+            {
+                case 1:
+                    conexion = new SqlConnection("Data Source=(local);Initial Catalog=VFM;Integrated Security=True");
+                    conexion.Open();
+
+                    return conexion;
+                    break;
+
+                case 2:
+                    conexion = new SqlConnection("Data Source=(local);Initial Catalog=Administracion_sys;Integrated Security=True");
+                    conexion.Open();
+
+                    return conexion;
+                    break;
+
+                case 3:
+                    conexion = new SqlConnection("Data Source=VCORE1\\SQLEXPRESS;Initial Catalog=VFM;Integrated Security=True");
+                    conexion.Open();
+
+                    return conexion;
+                    break;
+
+                case 4:
+                    conexion = new SqlConnection("Data Source=WEB\\SQLEXPRESS;Initial Catalog=VFM;Integrated Security=True");
+                    conexion.Open();
+
+                    return conexion;
+                    break;
+                default:
+                    conexion = new SqlConnection("Data Source=WEB\\SQLEXPRESS;Initial Catalog=VFM;Integrated Security=True");
+                    conexion.Open();
+
+                    return conexion;
+                    break;
+            }
+
+
+
         }
+
     }
 }
