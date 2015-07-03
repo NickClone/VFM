@@ -32,10 +32,8 @@ namespace WcfService1
            
 
             var s = new JavaScriptSerializer();
-           /* var j = new {
-                data = edif.FillHabitList();
-            }
-            * */
+
+
             string jsonClient = s.Serialize(edif.FillHabitList());
             WebOperationContext.Current.OutgoingResponse.ContentType =
                 "application/json; charset=utf-8";

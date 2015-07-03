@@ -138,7 +138,7 @@ function Resident(e) {
     });
 
 }
-function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id) {
+function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, perfil) {
     var usr = new Object();
     usr.id = id;
     usr.Nombre = nombre;
@@ -152,9 +152,11 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id) {
     usr.Piso = "2";
     usr.Dpto = "B";
     usr.FechaNacimiento = Fnac;
+    usr.Perfil = perfil;
     //usr.FechaRegistracion = Freg;
     //usr.FechaActualizacion = Fact;
     //usr.Estado = estado;
+    console.log("objeto user:"+usr);
     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/insHab',
         headers: {
@@ -176,14 +178,15 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id) {
 function loadEvents() {
     $("#crearUsr").click(function () {
         insertUsr(
-        $("#box_nombre").val(),
-        $("#box_apellido").val(),
-        $("#box_account").val(),
-        $("#box_password").val(),
-        $("#box_telefono").val(),
-        $("#box_FecNac").val(),
-        $("#box_sexo").val(),
-        $("#idUsr").val()
+        $("#nomUsr").val(),
+        $("#apeUsr").val(),
+        $("#mailusr").val(),
+        $("#PassUsr").val(),
+        $("#telUsr").val(),
+        $("#fnUsr").val(),
+        'M',
+        $("#idUsr").val(),
+            1 // OBTENER ID DEL PERFIL!!!
         );
     });
     $("#edif_btn").click(function () {
@@ -310,16 +313,24 @@ function btnlistener() {
 
     });
 }
+/*<td>John</td> <td>Carter</td> <td>johncarter@mail.com</td> <td>11B<td></tr> <tr>  <td>Peter</td> <td>Parker</td> <td>peterparker@mail.com</td> <td>4A<td> </tr> <tr>  <td>John</td> <td>Rambo</td> <td>johnrambo@mail.com</td> <td>5C<td>
 
+   // $('.modal-dialog').css('width', 500);
+   // $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
+*/
 
  function setModalBaja() {
     $("#modalTitle").text("Modificacion Usuarios");
     $("#bod").empty();
     var obj = new Object();
     obj = getListHabit();
-   // $('.modal-dialog').css('width', 500);
-   // $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
-   $("#bod").append( ' <table class="table table-striped" id= "tabla"> <thead> <tr> <th>Nombre</th> <th>Apellido</th> <th>DNI</th><th>Depto</th> </tr> </thead> <tbody> <tr>  <td>John</td> <td>Carter</td> <td>johncarter@mail.com</td> <td>11B<td></tr> <tr>  <td>Peter</td> <td>Parker</td> <td>peterparker@mail.com</td> <td>4A<td> </tr> <tr>  <td>John</td> <td>Rambo</td> <td>johnrambo@mail.com</td> <td>5C<td></tr> </tbody> </table> ');
+    var tbl='';
+     console.log(obj);
+    $.each(obj, function(key,value){
+          tbl += '<tr><td>'+value.Nombre+'</td><td>'+ value.Apellido+'</td><td>'+value.FechaNacimiento+'</td><td>'+ value.Piso + value.Dpto+'</td></tr>';
+    });
+     
+   $("#bod").append( ' <table class="table table-striped" id= "tabla"> <thead> <tr> <th>Nombre</th> <th>Apellido</th> <th>Fec Nac</th><th>Depto</th> </tr> </thead> <tbody> '+tbl +' </tbody> </table> ');
     $('#modal').modal({
         keyboard: false,
         show: true
@@ -348,8 +359,8 @@ function setModalMod() {
 
 
 function getListHabit() {
-
-      var edi = new Object();
+    var ret = new Object();
+    var edi = new Object();
     edi.cod_edif = 1;
     $.ajax({
         url: 'http://localhost:1066/services/service1.svc/GetHabitList',
@@ -362,11 +373,7 @@ function getListHabit() {
         data: JSON.stringify(edi),
         async: false
     }).done(function (data) {
-        $.each(data, function(key,value){
-            console.log('key:' + key + '  value: ' + value);
-        });
-        //console.log(data);
-        return data;
+       ret = data;
     });
-
+return ret;
 }

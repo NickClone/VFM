@@ -39,7 +39,7 @@ namespace WcfService1.clases
                     query = query + ",'" + usr.Account + "','" + usr.Password + "','";
                     query = query + usr.Nombre + "','" + usr.Apellido + "','" + usr.FechaNacimiento + "','";
                     query = query + usr.Tel + "','" + usr.Sexo + "',";
-                    query = query + usr.Estado;
+                    query = query + usr.Estado + "," + usr.Perfil;
 
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     this.reader = cmd.ExecuteReader();
