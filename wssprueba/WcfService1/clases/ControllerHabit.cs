@@ -62,9 +62,9 @@ namespace WcfService1.clases
 
                 // ELIMINAR EL HABITANTE ESPECIFICO
                 query = "DELETE FROM vfm_habit WHERE cod_edif = '" + habit.Id_edif + "'";
-                query = query + "'AND cod_usu = '" + habit.Id + "'";
-                query = query + "'AND dpto_piso = '" + habit.Piso + "'";
-                query = query + "'AND dpto_dpto = '" + habit.Dpto + "'";
+                query = query + " AND cod_usu = '" + habit.Id + "'";
+                query = query + " AND dpto_piso = '" + habit.Piso + "'";
+                query = query + " AND dpto_dpto = '" + habit.Dpto + "'";
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
             }

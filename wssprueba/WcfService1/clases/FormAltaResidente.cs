@@ -11,7 +11,7 @@ namespace WcfService1.clases
 
         public FormAltaResidente()
         {
-            this.form = "<form class='form-horizontal col-md-8'>";
+            this.form = "<form class='form-horizontal col-md-8' id ='altares'>";
             this.form = this.form + "<input id='idUsr' type='hidden'>";
             this.form = this.form + "<fieldset>";  // data-toggle='modal' data-target='#modal'
            // this.form = this.form + "<a data-toggle='modal' href='#myModal' class='btn btn-success btn-xs pull-right' id ='usralta'>Alta</a></button><button type='button' class='btn-danger btn-xs pull-right' id ='usrbaja'>Baja</button><button type='button' class='btn-info btn-xs pull-right' id ='usrmod'>Modificacion</button>";

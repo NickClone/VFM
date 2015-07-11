@@ -142,7 +142,7 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, per
   
     
     var usr = new Object();
-    usr.id = id;
+    usr.Id = id;
     usr.Nombre = nombre;
     usr.Apellido = apellido;
     usr.Account = account;
@@ -150,7 +150,7 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, per
     usr.Tel = tel;
     usr.Sexo = Sexo;
     usr.Id_edif = 1;
-    usr.rol = null;
+    usr.rol = 0;
     usr.Piso = piso;
     usr.Dpto = dtpo;
     usr.FechaNacimiento = Fnac;
@@ -266,17 +266,12 @@ var ret;
 
 
 function btnlistener() {
-    $('#usralta').click(function () {
-       $('#modal').modal({
-         show: false
-    });
-        
-    })
     $("#usrbaja").click(function () {
-       setModalBaja();
+        //pediente alert
+       delHab()
     });
     $("#usrmod").click(function () {
-         setModalMod();
+            setModalMod();
          
     });
 }
@@ -306,9 +301,11 @@ function btnlistener() {
         $.each(obj, function(key,value){
         //alert(value.Nombre + ' '+  $.trim(tableData[0]));
             if ( value.Apellido == $.trim(tableData[1]) && (value.Piso + value.Dpto) ==  $.trim(tableData[3]) ){
-               // funcion llenar dom formulario
+               fillHabitForm(value);
             }
         });
+        $('#modal').modal('hide');
+        
     }); 
           //alert("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[1]) + " , " + $.trim(tableData[2]));
          
@@ -325,23 +322,6 @@ function btnlistener() {
      
 
 }
-
-function setModalBaja() {
-    
-    alert('dar de baja?');
-    /*
-    $("#modalTitle").text("Baja Residentes");
-    $('.modal-dialog').css('width', 700);
-    $("#bod").empty();
-    $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrmail">Email</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
-    $('#modal').modal({
-        keyboard: false,
-        show: true
-    });
-
-*/
-}
-
 
 function getListHabit() {
     var ret = new Object();
@@ -362,3 +342,55 @@ function getListHabit() {
     });
 return ret;
 }
+
+
+function fillHabitForm(form){
+     $("#nomUsr").val(form.Nombre);
+     $("#apeUsr").val(form.Apellido);
+     $("#mailusr").val(form.Account);
+     $("#PassUsr").val(form.Password);
+     $("#telUsr").val(form.Tel);
+     $("#fnUsr").val(form.FechaNacimiento);
+     //$('#sexo input[type=radio]:checked').val();
+     $("#pisUsr").val(form.Dpto);
+     $("#depUsr").val(form.Piso);
+     $("#idUsr").val(form.Id)
+}
+
+
+function delHab(){
+    var usr = new Object();
+    usr.Id_edif =$("#mhdnId").val() ;
+    usr.Id=$("#idUsr").val();
+    usr.account=$("#mailusr").val();
+    usr.Piso= $("#pisUsr").val();
+    usr.Dpto=$("#depUsr").val();
+    $.ajax({
+        url: 'http://localhost:1066/services/service1.svc/DelHab',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: 'POST',
+        dataType: 'JSON',
+        data: JSON.stringify(usr),
+        async: false
+    }).success(function (data) {
+       alert("Baja realizada con Exito!!");
+        clearform('altares');
+    });
+
+    
+    
+}
+
+function clearform(form){
+    $('#'+form).find('input, select, textarea').each(function(){
+        alert('elemento del form: ' + $(this));
+        $(this).val();
+});
+    
+}
+
+
+
