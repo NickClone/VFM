@@ -16,11 +16,11 @@ namespace WcfService1.clases
             this.form = this.form + "<fieldset>";  // data-toggle='modal' data-target='#modal'
            // this.form = this.form + "<a data-toggle='modal' href='#myModal' class='btn btn-success btn-xs pull-right' id ='usralta'>Alta</a></button><button type='button' class='btn-danger btn-xs pull-right' id ='usrbaja'>Baja</button><button type='button' class='btn-info btn-xs pull-right' id ='usrmod'>Modificacion</button>";
             this.form = this.form + "<legend>Gestion Residentes</legend>";
-            this.form = this.form + "<button type='button' class='btn btn-default' id ='usrmod' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='btn btn-default' id ='usrbaja' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-minus'></span></button><button type='button' class='btn btn-default' id ='usralta' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-plus'></span></button>";
+            this.form = this.form + "<button type='button' class='btn btn-default' id ='usrmod' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='btn btn-default' id ='usrbaja' data-toggle='modal' data-target='#modal'><span class='glyphicon glyphicon-minus'></span></button>";
             this.form = this.form + "<div class='form-group'>";
             this.form = this.form + "  <label class='col-md-4 control-label' for='nomUsr'>Nombre</label>  ";
             this.form = this.form + "  <div class='col-md-4'>";
-            this.form = this.form + "  <input id='nomUsr' name='nomUsr' placeholder='asd' class='form-control input-md' required='' type='text'>";
+            this.form = this.form + "  <input id='nomUsr' name='nomUsr'  class='form-control input-md' required='' type='text'>";
             this.form = this.form + "  </div>";
             this.form = this.form + "</div>";
             this.form = this.form + "<!-- Text input-->";
@@ -69,7 +69,7 @@ namespace WcfService1.clases
             this.form = this.form + "</div>";
 
             this.form = this.form + "<!-- Multiple Radios (inline) -->";
-            this.form = this.form + "<div class='form-group'>";
+            this.form = this.form + "<div class='form-group' id='sexo'>";
             this.form = this.form + "  <label class='col-md-4 control-label' for='sexUsr'>Sexo</label>";
             this.form = this.form + "  <div class='col-md-3'> ";
             this.form = this.form + "    <label class='radio-inline' for='sexUsr-0'>";
@@ -122,7 +122,7 @@ namespace WcfService1.clases
             this.form = this.form + "</div>";
 
             this.form = this.form + "</fieldset>";
-            this.form = this.form + "<div id='modal' class='modal fade' tabindex='-1' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>X</button><h3 id='modalTitle'>Busqueda Reparacion</h3></div><div class='modal-body' id ='bod'><div id='detsearch'></div></div></div></div></div>";
+            this.form = this.form + "<div id='modal' class='modal fade' tabindex='-1' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>X</button><h3 id='modalTitle'>Residente</h3></div><div class='modal-body' id ='bod'><div id='detsearch'></div></div></div></div></div>";
             this.form = this.form + "</form>";
         }
 
@@ -135,7 +135,7 @@ namespace WcfService1.clases
             this.form = this.form + "<div class='form-group'>";
             this.form = this.form + "  <label class='col-md-4 control-label' for='nomUsr'>Nomre</label>  ";
             this.form = this.form + "  <div class='col-md-2'>";
-            this.form = this.form + "  <input id='nomUsr' name='nomUsr' placeholder='asda' class='form-control input-md' required='' type='text'>";
+            this.form = this.form + "  <input id='nomUsr' name='nomUsr'  class='form-control input-md' required='' type='text'>";
             this.form = this.form + "  </div>";
             this.form = this.form + "</div>";
             this.form = this.form + "<!-- Text input-->";

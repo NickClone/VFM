@@ -28,12 +28,7 @@ namespace WcfService1
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
         }
         public Stream GetHabitList(Edificio edif){
-            
-           
-
             var s = new JavaScriptSerializer();
-
-
             string jsonClient = s.Serialize(edif.FillHabitList());
             WebOperationContext.Current.OutgoingResponse.ContentType =
                 "application/json; charset=utf-8";

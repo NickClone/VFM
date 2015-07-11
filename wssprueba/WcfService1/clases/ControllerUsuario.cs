@@ -125,7 +125,7 @@ namespace WcfService1.clases
                                 Administrator Admin = new Administrator(usr);
 
 
-                                query = "select nom_admin,horario,cod_edif,edif_calle,Edif_num from vfm_EdifxAdmin A ";
+                                query = "select edif_nombre,horario,cod_edif,edif_calle,Edif_num from vfm_EdifxAdmin A ";
                                 query = query + " inner join vfm_edif E on A.edif_id = E.cod_edif " ;
                                 query = query + " where usu_id = " + usr.Id;
 

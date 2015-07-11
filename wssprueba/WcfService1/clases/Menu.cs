@@ -13,7 +13,13 @@ namespace WcfService1.clases
 
             this.menubar = "<div class='col-md-2 menuvar'><nav class='navbar nav-pills nav-stacked span3 navbar-default ' role='navigation'>";
             this.menubar = this.menubar + "     <div class='navbar-header'>";
-            this.menubar = this.menubar + "          <a class='navbar-brand' href='#' id = 'edificio'>Edificio</a>";
+           // this.menubar = this.menubar + "          <a class='navbar-brand' href='#' id = 'edificio'>Edificio</a>";
+            this.menubar = this.menubar + "  <div class='collapse navbar-collapse navbar-ex1-collapse'>";
+            this.menubar = this.menubar + "    <ul class='nav navbar-nav'>";
+            this.menubar = this.menubar + "    <li><a href='#' id='drop' data-toggle='collapse' data-target='#submenu0' aria-expanded='false'>Edificio</a>";
+            this.menubar = this.menubar + "      <ul class='active nav collapse' id='submenu0' role='menu' aria-labelledby='btn-1'>";
+            this.menubar = this.menubar + getFacilities(usr);
+            this.menubar = this.menubar + "    </li>";
             this.menubar = this.menubar + "            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>"; ;
             this.menubar = this.menubar + "                <span class='icon-bar'></span>";
             this.menubar = this.menubar + "                <span class='icon-bar'></span>";
@@ -84,6 +90,20 @@ namespace WcfService1.clases
             this.menubar = this.menubar + "  </div>";
             this.menubar = this.menubar + "</nav>";
             this.menubar = this.menubar + "</div>";
+        }
+        
+        private string getFacilities(User usr){
+            string ret="";
+            Administrator adm = (Administrator)usr;
+            foreach (Edificio edif in adm.LEdif)
+            {
+               ret  += "<li><a href='#'>" + edif.edif_calle +" " + edif.edif_num + "</a></li>";
+
+            }
+            ret += "</ul>";
+            return ret;
+            
+
         }
 
     }

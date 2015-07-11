@@ -127,7 +127,7 @@ function getform(idform) {
     }
     else {
         $("#forminy").empty();
-        $('#forminy').prepend('<img id="theImg" src="http://www.bpj-bd.com/images/Website-Under-Construction-template1.jpg"  height="100%" width="70%"/>')
+        //$('#forminy').prepend('<img id="theImg" src="http://www.bpj-bd.com/images/Website-Under-Construction-template1.jpg"  height="100%" width="70%"/>')
         
     }
 }
@@ -138,7 +138,9 @@ function Resident(e) {
     });
 
 }
-function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, perfil) {
+function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, perfil, piso,dtpo) {
+  
+    
     var usr = new Object();
     usr.id = id;
     usr.Nombre = nombre;
@@ -148,9 +150,9 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, per
     usr.Tel = tel;
     usr.Sexo = Sexo;
     usr.Id_edif = 1;
-    usr.rol = 2;
-    usr.Piso = "2";
-    usr.Dpto = "B";
+    usr.rol = null;
+    usr.Piso = piso;
+    usr.Dpto = dtpo;
     usr.FechaNacimiento = Fnac;
     usr.Perfil = perfil;
     //usr.FechaRegistracion = Freg;
@@ -176,6 +178,11 @@ function insertUsr(nombre, apellido, account, password, tel, Fnac, Sexo, id, per
 
 }
 function loadEvents() {
+    /*  usr.Id_edif = 1;
+    usr.rol = 2;
+    usr.Piso = "2";
+    usr.Dpto = "B";
+    */
     $("#crearUsr").click(function () {
         insertUsr(
         $("#nomUsr").val(),
@@ -184,9 +191,11 @@ function loadEvents() {
         $("#PassUsr").val(),
         $("#telUsr").val(),
         $("#fnUsr").val(),
-        'M',
+        $('#sexo input[type=radio]:checked').val(),
         $("#idUsr").val(),
-            1 // OBTENER ID DEL PERFIL!!!
+        1, 
+        $("#pisUsr").val(),
+        $("#depUsr").val()
         );
     });
     $("#edif_btn").click(function () {
@@ -220,42 +229,7 @@ function loadEvents() {
     });
 }
 
-function insertUser(nombre, apellido, account, password, tel, Fnac, Sexo,id) {
-    var usr = new Object();
-    usr.id = id;
-        usr.Nombre = nombre;
-    usr.Apellido = apellido;
-    usr.Account = account;
-    usr.Password = password;
-    usr.Tel = tel;
-    usr.Sexo = Sexo;
-    usr.Id_edif = 1;
-    usr.rol = 2;
-    usr.Piso = "2";
-    usr.Dpto = "B";
 
-    usr.FechaNacimiento = Fnac;
-    //usr.FechaRegistracion = Freg;
-    //usr.FechaActualizacion = Fact;
-    //usr.Estado = estado;
-    $.ajax({
-        url: 'http://localhost:1066/services/service1.svc/insHab',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        type: 'POST',
-        dataType: 'JSON',
-        data: JSON.stringify(usr),
-        async: false
-    }).done(function (data) {
-
-        alert("ID de nuevo usuario es: ");
-        alert(data);
-
-    });
-
-}
 
 function readImage(input) {
     if (input.files && input.files[0]) {
@@ -292,35 +266,24 @@ var ret;
 
 
 function btnlistener() {
-    /*
-    $("#usralta").click(function () {
-    BootstrapDialog.show('I want banana!');
-
-    });
-    */
     $('#usralta').click(function () {
-
-
+       $('#modal').modal({
+         show: false
+    });
+        
     })
     $("#usrbaja").click(function () {
-        setModalBaja();
-
-        //$("#modaltitle").empty();
-
+       setModalBaja();
     });
     $("#usrmod").click(function () {
-        setModalMod();
-
+         setModalMod();
+         
     });
 }
-/*<td>John</td> <td>Carter</td> <td>johncarter@mail.com</td> <td>11B<td></tr> <tr>  <td>Peter</td> <td>Parker</td> <td>peterparker@mail.com</td> <td>4A<td> </tr> <tr>  <td>John</td> <td>Rambo</td> <td>johnrambo@mail.com</td> <td>5C<td>
 
-   // $('.modal-dialog').css('width', 500);
-   // $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
-*/
 
- function setModalBaja() {
-    $("#modalTitle").text("Modificacion Usuarios");
+ function setModalMod() {
+    $("#modalTitle").text("Modificacion Residentes");
     $("#bod").empty();
     var obj = new Object();
     obj = getListHabit();
@@ -335,26 +298,48 @@ function btnlistener() {
         keyboard: false,
         show: true
     });
-    $('#tabla  tr ').click(function() {
+    var tableData;
+    $("#tabla  tr").click(function() {
+        tableData = $(this).children("td").map(function() {
+        return $(this).text();
+    }).get();
+        $.each(obj, function(key,value){
+        //alert(value.Nombre + ' '+  $.trim(tableData[0]));
+            if ( value.Apellido == $.trim(tableData[1]) && (value.Piso + value.Dpto) ==  $.trim(tableData[3]) ){
+               // funcion llenar dom formulario
+            }
+        });
+    }); 
+          //alert("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[1]) + " , " + $.trim(tableData[2]));
+         
+ 
+   // $('#tabla  tr ').click(function() {
        // alert($(this).find(".Email").html());   
-        alert($(this).text());
+        //alert($(this).text());
+//        $.each(obj, function(key,value){
+//            if (value.Nombre = $(this).nombre;
+//        }); 
         
-    });
-
+    //});
+     
+     
 
 }
 
-function setModalMod() {
-    $("#modalTitle").text("Modificacion Residente");
+function setModalBaja() {
+    
+    alert('dar de baja?');
+    /*
+    $("#modalTitle").text("Baja Residentes");
     $('.modal-dialog').css('width', 700);
     $("#bod").empty();
-    $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrDNI">DNI</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
+    $("#bod").append('<form class="form-horizontal"><fieldset><div class="form-group"><label class="col-md-4 control-label" for="usrmail">Email</label><div class="col-md-4"><input id="usrDNI" name="usrDNI" placeholder="sin puntos" class="form-control input-md" required="" type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="usrDepto">Depto</label><div class="col-md-2"><input id="usrDepto" name="usrDepto" placeholder="" class="form-control input-md" required="" type="text"><span class="help-block">Piso-Depto</span></div></div><div class="form-group"><label class="col-md-4 control-label" for="BajaUsr"></label><div class="col-md-4"><button id="BajaUsr" name="BajaUsr" class="btn btn-primary">Eliminiar</button></div></div></fieldset></form>');
     $('#modal').modal({
         keyboard: false,
         show: true
     });
 
-
+*/
 }
 
 
