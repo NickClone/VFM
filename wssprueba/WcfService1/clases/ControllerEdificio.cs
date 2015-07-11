@@ -58,8 +58,9 @@ namespace WcfService1.clases
                         habit.FechaNacimiento = reader.GetString(5);
                         habit.Sexo = reader.GetString(6).First();
                         habit.rol = reader.GetInt32(7);
-                        habit.Dpto = reader.GetInt32(8).ToString();
-                        habit.Piso = reader.GetString(9).ToString();
+                        habit.Dpto = reader.GetInt32(9).ToString();
+                        habit.Piso = reader.GetString(10).ToString();
+                        habit.Account = reader.GetString(11);
 
                         HabitList.Add(habit);
 

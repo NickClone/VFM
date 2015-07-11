@@ -33,6 +33,10 @@ namespace WcfService1
         [WebInvoke(UriTemplate = "/insHab", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream insHab(Habitante hab);
 
+        [OperationContract(Name = "Delhab")]
+        [WebInvoke(UriTemplate = "/DelHab", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
+        Stream DelHab(Habitante hab);
+
         [OperationContract(Name = "GetLhab")]
         [WebInvoke(UriTemplate = "/GetHabitList", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, Method = "POST", BodyStyle = WebMessageBodyStyle.Bare)]
         Stream GetHabitList(Edificio edif);

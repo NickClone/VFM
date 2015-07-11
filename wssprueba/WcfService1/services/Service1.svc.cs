@@ -107,6 +107,21 @@ namespace WcfService1
         }
 
 
+        public Stream DelHab(Habitante hab)
+        {
+
+            ControllerHabit cont = new ControllerHabit(hab);
+
+            var s = new JavaScriptSerializer();
+            string jsonClient = s.Serialize(cont.DeleteHabit());
+            WebOperationContext.Current.OutgoingResponse.ContentType =
+                "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonClient));
+
+        }
+
+
+
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
